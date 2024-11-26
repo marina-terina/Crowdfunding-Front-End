@@ -5,7 +5,9 @@ function NavBar() {
         <div>
             <nav>
                 <Link to="/">Home</Link>
-                <Link to="/project">Project</Link>
+                <Link to="/project">Projects</Link>
+                <Link to="/">Sign In</Link>
+                <Link to="/project">Contacts</Link>
             </nav>
             <Outlet />
         </div>
