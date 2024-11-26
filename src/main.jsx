@@ -12,13 +12,13 @@ const router = createBrowserRouter([
       element: <NavBar />,
       children: [
           { path: "/", element: <HomePage /> },
-          { path: "/project", element: <ProjectPage /> },
+          { path: "/project/:id", element: <ProjectPage /> },
       ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
      {/* Here we wrap our app in the router provider so they render */}
-     <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
