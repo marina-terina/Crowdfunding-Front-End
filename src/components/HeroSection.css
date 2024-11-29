@@ -1,0 +1,45 @@
+.hero-section {
+    height: 370px;
+    background-image: url("../assets/images/Hero.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;    
+}
+
+.hero-content {
+    max-width: 600px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-family: "Finger Paint", serif;
+    text-shadow: 2px 2px #fe4f01;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color:#ee8a2c;
+    color:#ee8a2c;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+button:hover {
+    background-color: #218838;
+    color: white;
+}
