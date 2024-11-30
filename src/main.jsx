@@ -6,7 +6,8 @@ import ProjectPage from "./pages/ProjectPage.jsx";
 import "./App.css"
 import NavBar from "./components/NavBar.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-
+import SignupPage from "./pages/SignupPage.jsx"
+import CreateProject from "./pages/CreateProject.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,8 @@ const router = createBrowserRouter([
       children: [
           { path: "/", element: <HomePage /> },
           { path: "/login", element: <LoginPage /> },
+          { path: "/signup", element: <SignupPage />},
+          { path: "/createProject", element: <CreateProject />},
           { path: "/project/:id", element: <ProjectPage /> },
       ],
   },

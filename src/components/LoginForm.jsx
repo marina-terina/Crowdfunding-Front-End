@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import postLogin from "../api/post-login.js";
-
+import "./LoginForm.css";
 
 function LoginForm() {
     const navigate = useNavigate(); 
@@ -31,17 +32,16 @@ function LoginForm() {
     };
     return (
     <form>
+        <h2>Welcome Back! Log in to Kickstart!</h2>
         <div>
-        <label htmlFor="username">Username:</label>
             <input
                 type="text"
                 id="username"
-                placeholder="Enter username"
+                placeholder="Username"
                 onChange={handleChange}
             />
         </div>
         <div>
-        <label htmlFor="password">Password:</label>
             <input
                 type="password"
                 id="password"
@@ -52,6 +52,9 @@ function LoginForm() {
             <button type="submit" onClick={handleSubmit}>
                 Login
             </button>
+            <div>
+                <Link to="/signup">Don't have an account? Sign Up Here</Link>
+            </div>
     </form>
     );
 }
