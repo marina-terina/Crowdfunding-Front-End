@@ -12,7 +12,7 @@ function NavBar() {
                     <Link to="/">KickarOO</Link>
                 </div>
                 <div className = "navbar-right">
-                    <Link to="/">Sign In</Link>
+                    <Link to="/login">Log In</Link>
                 </div>
             </nav>
             <Outlet />
