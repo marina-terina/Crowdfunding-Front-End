@@ -8,7 +8,7 @@ import NavBar from "./components/NavBar.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx"
 import CreateProject from "./pages/CreateProject.jsx";
-
+import { AuthProvider } from "./components/AuthProvider.jsx";
 const router = createBrowserRouter([
   {
       path: "/",
@@ -22,9 +22,12 @@ const router = createBrowserRouter([
       ],
   },
 ]);
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <AuthProvider> 
      {/* Here we wrap our app in the router provider so they render */}
     <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

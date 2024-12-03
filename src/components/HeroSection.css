@@ -1,6 +1,6 @@
 .hero-section {
     height: 370px;
-    background-image: url("../assets/images/Hero.png");
+    background-image: url("../assets/images/Hero2.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -21,6 +21,7 @@ h1 {
     font-size: 3rem;
     font-family: "Finger Paint", serif;
     text-shadow: 2px 2px #fe4f01;
+    
 }
 
 p {

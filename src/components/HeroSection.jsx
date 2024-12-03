@@ -5,7 +5,7 @@ function HeroSection() {
     return (
         <div className="hero-section">
                 <h1>Kickstart Your Dream!</h1>
-                <Link to="/">
+                <Link to="/createProject">
                 <button>Get Started</button>
                 </Link>
             
