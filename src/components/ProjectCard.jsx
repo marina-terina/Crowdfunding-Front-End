@@ -11,6 +11,7 @@ return (
         <img src={projectData.image} />
         <h3>{projectData.title}</h3>
     </Link>
+    <p className="project-description">{projectData.description}</p>
     </div>
 );
 }
