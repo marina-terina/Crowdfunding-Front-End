@@ -1,8 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import useProject from "../hooks/use-project";
 import "./ProjectPage.css"
+import deleteProject from "../api/delete-project";
+import { useNavigate } from "react-router-dom";
 
 function ProjectPage() {
+    const navigate = useNavigate(); 
     // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useProject hook.
     const { id } = useParams();
     // useProject returns three pieces of info, so we need to grab them all here
@@ -16,6 +19,13 @@ function ProjectPage() {
 
     if (error) {
         return (<p>{error.message}</p>)
+    }
+    const handleDelete = (event) => {
+        deleteProject(
+                id
+            ).then((response) => {
+                navigate("/");
+        });
     }
     
     return (
@@ -63,7 +73,9 @@ function ProjectPage() {
                     ))}
                 </ul>
                 </div>
-                
+            <button className="create-pledge-btn" onClick={handleDelete}>
+                Delete this Dream
+                </button>    
             </div>
         </div>
     );

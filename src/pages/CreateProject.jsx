@@ -28,7 +28,7 @@ function CreateProject() {
         // console.log("Project Created:", project);
         createProject(newProject.title, newProject.description, newProject.goal, newProject.reward, newProject.image, true)
     .then((res) => {
-        console.log('test res----', res)
+        navigate("/");
 
     })
     .catch((error) => {
@@ -36,8 +36,6 @@ function CreateProject() {
 
     });
 
-        navigate("/");
-    
     }
         
     return (
