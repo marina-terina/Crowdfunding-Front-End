@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useProject from "../hooks/use-project";
 import "./ProjectPage.css"
 
@@ -12,11 +12,12 @@ function ProjectPage() {
     if (isLoading) {
         return (<p>loading...</p>)
     }
-    
+
+
     if (error) {
         return (<p>{error.message}</p>)
     }
-
+    
     return (
         <div className="project-card-container">
             <div className="project-card">
@@ -42,10 +43,11 @@ function ProjectPage() {
                 <h3>Goal:</h3>
                 <p>{project.goal}</p> 
 
+                <Link to ={`/project/${project.id}/pledge`} className="pledge-link">
                 <button className="create-pledge-btn">
                 Kick This Dream
                 </button>
-
+                </Link>
                 <div className="project-info">
                     <h3>Created at: {project.date_created}</h3>
                     <h3>{`Status: ${project.is_open ? "Open" : "Closed"}`}</h3>

@@ -9,6 +9,8 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx"
 import CreateProject from "./pages/CreateProject.jsx";
 import { AuthProvider } from "./components/AuthProvider.jsx";
+import CreatePledge from "./pages/CreatePledge.jsx";
+
 const router = createBrowserRouter([
   {
       path: "/",
@@ -18,6 +20,7 @@ const router = createBrowserRouter([
           { path: "/login", element: <LoginPage /> },
           { path: "/signup", element: <SignupPage />},
           { path: "/createProject", element: <CreateProject />},
+          { path: "/project/:projectId/pledge", element: <CreatePledge/> },
           { path: "/project/:id", element: <ProjectPage /> },
       ],
   },
