@@ -3,8 +3,11 @@ import useProject from "../hooks/use-project";
 import "./ProjectPage.css"
 import deleteProject from "../api/delete-project";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/use-auth.js";
+
 
 function ProjectPage() {
+    const {auth, setAuth} = useAuth();
     const navigate = useNavigate(); 
     // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useProject hook.
     const { id } = useParams();
@@ -73,9 +76,12 @@ function ProjectPage() {
                     ))}
                 </ul>
                 </div>
-            <button className="create-pledge-btn" onClick={handleDelete}>
-                Delete this Dream
-                </button>    
+            
+                {auth.token ? (
+                 <button className="create-pledge-btn" onClick={handleDelete}>
+                 Delete this Dream
+                 </button>  
+                    ) : null}
             </div>
         </div>
     );
