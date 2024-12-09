@@ -26,7 +26,7 @@ function ProjectPage() {
         image: project?.image || "",
         isOpen: project?.is_open || true,
     });
-
+    const [showUpdateForm, setShowUpdateForm ] = useState(false);
     if (isLoading) {
         return (<p>loading...</p>)
     }
@@ -36,16 +36,7 @@ function ProjectPage() {
         return (<p>{error.message}</p>)
     }
     const handleUpdate = async (event) => {
-        event.preventDefault(); // Prevent form submission default behavior
-    
-        try {
-            await updateProject(id, formData);
-            console.log("Project updated successfully");
-            navigate(`/project/${id}`); //Redirect to the updated project page
-        } catch (error) {
-            console.error("Error updating project:", error);
-            alert("Failed to update the project. Please try again.");
-        }
+        setShowUpdateForm (true)
     };
     
 
@@ -102,9 +93,9 @@ function ProjectPage() {
                     ))}
                 </ul>
                 </div>
-
+{showUpdateForm ?
 <UpdateProject project={project} />
-
+: null}
 
 
                 {auth.token ? (
