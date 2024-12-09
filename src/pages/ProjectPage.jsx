@@ -2,8 +2,11 @@ import { Link, useParams } from "react-router-dom";
 import useProject from "../hooks/use-project";
 import "./ProjectPage.css"
 import deleteProject from "../api/delete-project";
+import updateProject from "../api/update-project.js"
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/use-auth.js";
+import { useState } from "react";
+import UpdateProject from "./UpdateProject.jsx";
 
 
 function ProjectPage() {
@@ -15,6 +18,15 @@ function ProjectPage() {
     const { project, isLoading, error } = useProject(id); 
     console.log('testing---project: ', project)
 
+    const [formData, setFormData] = useState({
+        title: project?.title || "",
+        description: project?.description || "",
+        goal: project?.goal || "",
+        reward: project?.reward || "",
+        image: project?.image || "",
+        isOpen: project?.is_open || true,
+    });
+
     if (isLoading) {
         return (<p>loading...</p>)
     }
@@ -23,12 +35,26 @@ function ProjectPage() {
     if (error) {
         return (<p>{error.message}</p>)
     }
-    const handleDelete = (event) => {
-        deleteProject(
-                id
-            ).then((response) => {
-                navigate("/");
-        });
+    const handleUpdate = async (event) => {
+        event.preventDefault(); // Prevent form submission default behavior
+    
+        try {
+            await updateProject(id, formData);
+            console.log("Project updated successfully");
+            navigate(`/project/${id}`); //Redirect to the updated project page
+        } catch (error) {
+            console.error("Error updating project:", error);
+            alert("Failed to update the project. Please try again.");
+        }
+    };
+    
+
+        const handleDelete = (event) => {
+            updateProject(
+                    id
+                ).then((response) => {
+                    navigate("/");
+            });
     }
     
     return (
@@ -76,12 +102,26 @@ function ProjectPage() {
                     ))}
                 </ul>
                 </div>
-            
+
+<UpdateProject project={project} />
+
+
+
                 {auth.token ? (
-                 <button className="create-pledge-btn" onClick={handleDelete}>
-                 Delete this Dream
-                 </button>  
+                    <button className="update-pledge-btn" onClick={handleUpdate}>
+                    Update this Dream
+                    </button>  
                     ) : null}
+
+                {auth.token ? (
+                    <button className="delete-pledge-btn" onClick={handleDelete}>
+                    Delete this Dream
+                    </button>  
+                    ) : null}
+
+                
+            
+               
             </div>
         </div>
     );
