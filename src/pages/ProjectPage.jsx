@@ -9,6 +9,7 @@ import { useState } from "react";
 import UpdateProject from "./UpdateProject.jsx";
 
 
+
 function ProjectPage() {
     const {auth, setAuth} = useAuth();
     const navigate = useNavigate(); 
@@ -25,6 +26,7 @@ function ProjectPage() {
         reward: project?.reward || "",
         image: project?.image || "",
         isOpen: project?.is_open || true,
+        // projectCreator: project?.userID || "",
     });
     const [showUpdateForm, setShowUpdateForm ] = useState(false);
     if (isLoading) {
@@ -47,22 +49,22 @@ function ProjectPage() {
                     navigate("/");
             });
     }
-    
+    const isOwner = auth.userId === project.owner;
     return (
+        
         <div className="project-card-container">
-            <div className="project-card">
+            <div className="projectPage-card">
                 {/* Project Image */}
-                <img 
+                <img className="projectPage-image"
                     src={project.image} 
                     alt={`Image for ${project.title}`} 
-                    className="project-image"
+                    
                 />
-                
+            <div className="project-description"> 
                 {/* Project Title */}
                 <h2 className="project-title">{project.title}</h2>
                 
                 {/* Project Description */}
-                <h3>Description:</h3>
                 <p>{project.description}</p> 
 
                 {/* Project Reward */}
@@ -70,18 +72,28 @@ function ProjectPage() {
                 <p>{project.reward}</p> 
 
                 {/* Project Goal */}
-                <h3>Goal:</h3>
-                <p>{project.goal}</p> 
+                <h3>Goal:{project.goal}</h3>
+        <br />
 
+                <div className="project-creator">
+                    <h3>Created By:</h3>
+            {/* {<h3>Created by: {projectCreator.userID}</h3> */}
+        </div>
+<div className="support-button">
                 <Link to ={`/project/${project.id}/pledge`} className="pledge-link">
-                <button className="create-pledge-btn">
+                <button >
                 Kick This Dream
                 </button>
                 </Link>
+                </div>
+
+
                 <div className="project-info">
                     <h3>Created at: {project.date_created}</h3>
                     <h3>{`Status: ${project.is_open ? "Open" : "Closed"}`}</h3>
                 </div>
+
+                
                 
                 <div className="pledges-section">
                 <h3>Pledges:</h3>
@@ -93,18 +105,19 @@ function ProjectPage() {
                     ))}
                 </ul>
                 </div>
+                </div>  
 {showUpdateForm ?
 <UpdateProject project={project} />
 : null}
 
-
-                {auth.token ? (
+<div className="support-button">
+                {auth.token && isOwner ? (
                     <button className="update-pledge-btn" onClick={handleUpdate}>
                     Update this Dream
                     </button>  
                     ) : null}
 
-                {auth.token ? (
+                {auth.token && isOwner ? (
                     <button className="delete-pledge-btn" onClick={handleDelete}>
                     Delete this Dream
                     </button>  
@@ -112,7 +125,7 @@ function ProjectPage() {
 
                 
             
-               
+</div>  
             </div>
         </div>
     );

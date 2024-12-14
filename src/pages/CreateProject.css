@@ -1,0 +1,24 @@
+body {
+
+}
+.create-project-form {
+    max-width: 900px;
+    margin: 20 auto; /* Center the form */
+    padding: 2rem;
+    border: 1px solid #ddd;
+
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.form-group textarea {
+    min-height: 150px; /* Larger height for textarea */
+    resize: vertical; /* Allow resizing vertically */
+}

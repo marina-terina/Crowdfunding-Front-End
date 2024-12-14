@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useCreateProject from "../hooks/create-projects";
 import createProject from "../api/create-project";
+import "./CreateProject.css";
 
 function CreateProject() {
     const navigate = useNavigate();  
@@ -39,10 +40,12 @@ function CreateProject() {
     }
         
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="create-project-form" onSubmit={handleSubmit}>
+
+
             <h2>Create Your Project</h2>
             
-            <div>
+            <div className="form-group">
                 <label htmlFor="title">Title:</label>
                 <input
                     type="text"
@@ -54,7 +57,7 @@ function CreateProject() {
                 />
             </div>
 
-            <div>
+            <div className="form-group">
                 <label htmlFor="description">Description:</label>
                 <textarea
                     id="description"
@@ -65,7 +68,7 @@ function CreateProject() {
                 />
             </div>
 
-            <div>
+            <div className="form-group">
                 <label htmlFor="goal">Goal (Amount):</label>
                 <input
                     type="number"
@@ -77,7 +80,7 @@ function CreateProject() {
                 />
             </div>
 
-            <div>
+            <div className="form-group">
                 <label htmlFor="reward">Reward:</label>
                 <input
                     type="text"
@@ -89,7 +92,7 @@ function CreateProject() {
                 />
             </div>
 
-            <div>
+            <div className="form-group">
                 <label htmlFor="image">Image URL:</label>
                 <input
                     type="url"

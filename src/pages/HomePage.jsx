@@ -3,6 +3,7 @@ import ProjectCard from "../components/ProjectCard";
 import HeroSection from '../components/HeroSection';
 import "./HomePage.css";
 
+
 function HomePage() {
     const { projects, isLoading, error } = useProjects();
 
@@ -15,6 +16,8 @@ if (isLoading) {
     if (error) {
         return (<p>{error.message}</p>)
     }
+    
+
     return (
     <div>
             <HeroSection />

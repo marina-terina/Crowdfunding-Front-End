@@ -4,11 +4,18 @@ import "./HeroSection.css";
 function HeroSection() {
     return (
         <div className="hero-section">
-                <h1>Kickstart Your Dream!</h1>
+                <div id="rotate-words">  
+<div>Kickstart Your dream<br /> </div> 
+<div>The big dreams take flight<br /></div>
+<div>Turning the impossible into achievable.<br/></div>
+<div>Achieve your dreams, inspire others<br /> </div>
+</div>
+       
                 <Link to="/createProject">
                 <button>Get Started</button>
                 </Link>
             
+       
         </div>
     );
 }

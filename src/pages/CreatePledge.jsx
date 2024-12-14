@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { postPledge } from "../api/post-pledge";
+import "./CreatePledge.css";
 
 function CreatePledge() {
     const navigate = useNavigate();  
@@ -31,7 +32,7 @@ function CreatePledge() {
     };
 
 return (
-    <form onSubmit={handleSubmit}>
+    <form className="create-pledge-form" onSubmit={handleSubmit}>
         <div>
             <label htmlFor="amount">Amount:</label>
             <input
