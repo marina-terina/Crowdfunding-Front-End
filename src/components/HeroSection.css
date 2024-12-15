@@ -1,6 +1,6 @@
 .hero-section {
     height: 370px;
-    background-image: url("../assets/images/Hero2.png");
+    background-image: url("../assets/images/Hero3.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -40,7 +40,7 @@
   }
   
   
-  #rotate-words div {
+  /* #rotate-words div {
     margin-left: 50px;
    position:absolute;
    opacity:0;
@@ -65,27 +65,67 @@
 #rotate-words div:nth-child(3) { animation-delay: 8s; }
 #rotate-words div:nth-child(4) { animation-delay: 12s; }
   
-  /* #rotate-words div:nth-child(2) { animation-delay: 4s}
-  #rotate-words div:nth-child(3) { animation-delay: 8s}
-  #rotate-words div:nth-child(4) { animation-delay: 12s} */
-  /* #rotate-words div:nth-child(5) { animation-delay: 16s} */
-  /* #rotate-words div:nth-child(6) { animation-delay: 20s}
-  #rotate-words div:nth-child(7) { animation-delay: 24s}
-  #rotate-words div:nth-child(8) { animation-delay: 28s} */
-  
   @keyframes author {
       0% { opacity: 0;  transform: translateY(100px);filter:blur(10px);transform: scaleY(2)}
       20% { opacity:0; transform: translateY(200px);filter:blur(10px); transform: scaleY(2)}
       30% { opacity:1; transform: translateY(0);filter:blur(0px);transform: scaleY(1)}
       90% { opacity:1; transform: translateY(0);filter:blur(0px);transform: scaleY(.9)}
       100% { opacity:0; transform: translateY(0);filter:blur(10px);transform: scale(2)}
-  }
+  } */
 /* h1 {
     font-size: 3rem;
     font-family: "Finger Paint", serif;
     text-shadow: 2px 2px #fe4f01;
     
 } */
+#rotate-words {
+    padding: 5%;
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-family: "Finger Paint", serif;
+    text-shadow: 2px 2px #fe4f01;
+}
+
+#rotate-words div {
+    position: absolute;
+    opacity: 0;
+    overflow: hidden;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    line-height: 1.4em;
+}
+
+#rotate-words div:nth-child(1) {
+    animation: rotate-word 24s linear infinite 0s;
+}
+#rotate-words div:nth-child(2) {
+    animation: rotate-word 24s linear infinite 6s;
+}
+#rotate-words div:nth-child(3) {
+    animation: rotate-word 24s linear infinite 12s;
+}
+#rotate-words div:nth-child(4) {
+    animation: rotate-word 24s linear infinite 18s;
+}
+
+@keyframes rotate-word {
+    0% { 
+        opacity: 0; 
+        filter: blur(10px); 
+        transform: translateX(-50%) scale(1.2); 
+    }
+    3%, 22% { 
+        opacity: 1; 
+        filter: blur(0px); 
+        transform: translateX(-50%) scale(1); 
+    }
+    25%, 100% { 
+        opacity: 0; 
+        filter: blur(10px); 
+        transform: translateX(-50%) scale(1.2); 
+    }
+}
 
 p {
     font-size: 1.5rem;

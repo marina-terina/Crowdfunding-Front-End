@@ -40,10 +40,10 @@ function UpdateProject(props) {
     }
         
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Create Your Project</h2>
+        <form className="create-project-form" onSubmit={handleSubmit}>
+            <h2>Update Your Project</h2>
             
-            <div>
+            <div className="form-group">
                 <label htmlFor="title">Title:</label>
                 <input
                     type="text"

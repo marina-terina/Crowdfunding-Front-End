@@ -3,6 +3,7 @@ import postSignup from "../api/post-signup.js";
 import postLogin from "../api/post-login.js";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/use-auth.js";
+import "./SignupForm.css";
 
 function SignupForm() {
     const navigate = useNavigate(); 
@@ -60,7 +61,7 @@ function SignupForm() {
         };
     
         return (
-            <form>
+            <form className="signup-form">
                 <h2>Please Sign Up to Kickstart Your Dream</h2>
                 {error && <div className="error-message">{error}</div>} {/* Display error messages */}
                 <div>

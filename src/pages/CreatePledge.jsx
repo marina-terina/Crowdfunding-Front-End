@@ -58,7 +58,7 @@ function CreatePledge() {
 
 return (
     <form className="create-pledge-form" onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
             <label htmlFor="amount">Amount:</label>
             <input
                 type="number"
@@ -69,7 +69,7 @@ return (
                 required
             />
         </div>
-        <div>
+        <div className="form-group">
             <label htmlFor="comment">Comment:</label>
             <textarea
                 id="comment"
@@ -78,7 +78,7 @@ return (
                 onChange={handleChange}
             ></textarea>
         </div>
-        <div>
+        <div className="checkbox-group">
             <label>
                 <input
                     type="checkbox"
@@ -89,7 +89,7 @@ return (
                 Make this pledge anonymous
             </label>
         </div>
-        <div>
+        <div className="checkbox-group">
             <label>
                 <input
                     type="checkbox"

@@ -1,26 +1,62 @@
-body {
-
+.create-project-container {
+    background-color:#c1e9fa;
 }
-.create-project-form {
-    max-width: 900px;
-    margin: 20 auto; /* Center the form */
-    padding: 2rem;
-    border: 1px solid #ddd;
 
+.create-project-form {
+    background-image: none;
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 50px 30px;
+    background-color:#c1e9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+}
+
+.create-project-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 97%;
+    text-align: left;
+    
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+    text-align: left; 
 }
 
 .form-group input,
 .form-group textarea {
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    display: block;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #fe4f01;
 }
 
 .form-group textarea {
-    min-height: 150px; /* Larger height for textarea */
-    resize: vertical; /* Allow resizing vertically */
+    min-height: 150px;
+    resize: vertical;
+    font-family: inherit;
 }
 
 .login-message {

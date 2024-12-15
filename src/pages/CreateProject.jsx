@@ -54,6 +54,7 @@ function CreateProject() {
     }
         
     return (
+        <div className="create-project-container">
         <form className="create-project-form" onSubmit={handleSubmit}>
 
 
@@ -122,6 +123,7 @@ function CreateProject() {
 
             <button type="submit">Create Project</button>
         </form>
+        </div>
     );
 }
 

@@ -63,11 +63,11 @@ function LoginForm() {
                         onChange={handleChange}
                     />
                 </div> */}
-                <div>User does not exist. Please sign up to get start</div>
+                <div className="login-message">User does not exist. Please sign up to get start</div>
                     {/* <button type="submit" onClick={handleSubmit}>
                         Login
                     </button> */}
-                    <div>
+                    <div className="signup-prompt">
                         <Link to="/signup">Sign Up Here</Link>
                     </div>
             </form>
