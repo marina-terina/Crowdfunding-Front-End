@@ -3,6 +3,10 @@ export async function postPledge(amount, comment, anonymous, reward, projectId) 
     const url = `${import.meta.env.VITE_API_URL}/projects/${projectId}/pledges/`;
     const token = window.localStorage.getItem("token")
 
+    if (!token) {
+      throw new Error("Invalid or missing token. Please log in.");
+    }
+  
     try {
       // Sending POST request with pledge data
       const response = await fetch(url, {

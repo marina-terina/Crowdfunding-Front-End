@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/use-auth.js";
 import { useState } from "react";
 import UpdateProject from "./UpdateProject.jsx";
+import useUser from "../hooks/use-user.js";
 
 
 
@@ -17,18 +18,28 @@ function ProjectPage() {
     const { id } = useParams();
     // useProject returns three pieces of info, so we need to grab them all here
     const { project, isLoading, error } = useProject(id); 
-    console.log('testing---project: ', project)
+    console.log('Project data:', project);
+    const userId = project?.user_id;
+    console.log('User ID from project:', userId);
+    const { user, isLoading: isUserLoading, error: userError } = useUser(userId);
+    // console.log('testing---user: ', user);
+    console.log('User data:', user);
+    console.log('Is user loading:', isUserLoading);
+    console.log('Project user_id:', project?.user_id);
+
 
     const [formData, setFormData] = useState({
         title: project?.title || "",
         description: project?.description || "",
         goal: project?.goal || "",
+        user: project?.user_id || "",
         reward: project?.reward || "",
         image: project?.image || "",
         isOpen: project?.is_open || true,
         // projectCreator: project?.userID || "",
     });
     const [showUpdateForm, setShowUpdateForm ] = useState(false);
+    
     if (isLoading) {
         return (<p>loading...</p>)
     }
@@ -36,6 +47,9 @@ function ProjectPage() {
 
     if (error) {
         return (<p>{error.message}</p>)
+    }
+    if (userError) {
+        return <p>Error loading user: {userError.message}</p>;
     }
     const handleUpdate = async (event) => {
         setShowUpdateForm (true)
@@ -75,10 +89,15 @@ function ProjectPage() {
                 <h3>Goal:{project.goal}</h3>
         <br />
 
-                <div className="project-creator">
-                    <h3>Created By:</h3>
-            {/* {<h3>Created by: {projectCreator.userID}</h3> */}
-        </div>
+        <div className="project-creator">
+  <h3>Created By:</h3>
+  {user ? (
+    <p>{user.username}</p>  
+  ) : (
+    <p>To be able to display username here i need to update my backend, so the username will be available to the pablic...</p>
+  )}
+</div>
+
 <div className="support-button">
                 <Link to ={`/project/${project.id}/pledge`} className="pledge-link">
                 <button >

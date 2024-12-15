@@ -6,8 +6,8 @@ function HeroSection() {
         <div className="hero-section">
                 <div id="rotate-words">  
 <div>Kickstart Your dream<br /> </div> 
-<div>The big dreams take flight<br /></div>
-<div>Turning the impossible into achievable.<br/></div>
+<div>Here, big dreams take flight<br /></div>
+<div>We can turn the impossible into achievable.<br/></div>
 <div>Achieve your dreams, inspire others<br /> </div>
 </div>
        

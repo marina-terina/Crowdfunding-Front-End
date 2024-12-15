@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import useCreateProject from "../hooks/create-projects";
 import createProject from "../api/create-project";
 import "./CreateProject.css";
+import useAuth from "../hooks/use-auth";
 
 function CreateProject() {
+    const { auth } = useAuth();
     const navigate = useNavigate();  
     const [newProject, setNewProject] = useState({
         title: "",
@@ -14,6 +16,18 @@ function CreateProject() {
         image: "",
     });
 
+    if (!auth.token) {
+        return (
+            <div className="login-message">
+                <h2>Oops! Almost there!</h2>
+                <p>You're just one step away from bringing your dream to life! But first, we need you to log in. Go ahead, log in and let's make it happen!  </p>
+                <button onClick={() => navigate('/login')}>Go to Login</button>
+                <p className="signup-prompt">
+                Don't have an account? <Link to="/signup">Sign Up Here</Link>
+            </p>
+            </div>
+        );
+    }
     const handleChange = (event) => {
         const { id, value } = event.target;
         setNewProject((prevNewProject) => ({
