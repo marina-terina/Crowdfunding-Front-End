@@ -1,19 +1,26 @@
 import { Link } from "react-router-dom";
 import "./HeroSection.css";
+import kangarooImage from "../assets/images/Kickaroo.png";
 
 function HeroSection() {
     return (
         <div className="hero-section">
-            <div id="rotate-words">  
-                <div>Kickstart Your dream<br /> </div> 
-                <div>Here, big dreams take flight<br /></div>
-                <div>We turn the impossible into achievable<br/></div>
-                <div>Achieve your dreams, inspire others<br /> </div>
+            <div className="hero-content">
+                <p>Join a community of fearless creators and backers who dare to make the impossible possible.</p>
+                <div id="rotate-words">  
+                    <div>Kickstart Your dream<br /> </div> 
+                    <div>Here, big dreams take flight<br /></div>
+                    <div>No idea is too wild, no dream too bizarre!<br/></div>
+                    <div>Achieve your dreams, inspire others<br /> </div>
+                </div>
+           
+                <Link to="/createProject">
+                    <button type="button" className="cta-link">Get Started</button>
+                </Link>
             </div>
-       
-            <Link to="/createProject" className="cta-link">
-                <button type="button">Get Started</button>
-            </Link>
+            <div className="hero-image">
+                <img src={kangarooImage} alt="Kickaroo Mascot" />
+            </div>
         </div>
     );
 }

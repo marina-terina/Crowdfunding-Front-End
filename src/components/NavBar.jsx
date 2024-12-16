@@ -13,19 +13,19 @@ const handleLogout = () => {
     return (
         <div>
             <nav className = "navbar">
-                <div className = "navbar-left">
+                <div className = "nav-left">
                     <Link to="/">How It Works</Link>
                 </div>
-                <div className="navbar-center">
-                    <Link to="/">KickarOO</Link>
+                <div className = "logo-container">
+                    <Link className = "logo" to ="/">Kick<span>arOO!</span></Link>
                 </div>
-                <div className = "navbar-right">
+                <div className = "nav-right">
                 {auth.token ? (
                     <Link to="/" onClick={handleLogout}>
                         Log Out
                     </Link>
                     ) : (
-                    <Link to="/login">Login</Link>
+                    <Link className="login-button" to="/login">Login</Link>
                 )}
                 </div>
             </nav>

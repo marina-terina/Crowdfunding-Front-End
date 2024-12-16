@@ -22,7 +22,7 @@ if (isLoading) {
     <div>
             <HeroSection />
         <section className ="projects-container">
-            <h2>Dreams in Motion</h2>
+            <h2><span>Dreams</span> in Motion</h2>
                 <div id ="project-list">
                     {projects.map((projectData, key) => {
                     return <ProjectCard key={key} projectData={projectData} />;
