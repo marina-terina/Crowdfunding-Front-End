@@ -5,7 +5,7 @@ import deleteProject from "../api/delete-project";
 import updateProject from "../api/update-project.js"
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/use-auth.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UpdateProject from "./UpdateProject.jsx";
 import useUser from "../hooks/use-user.js";
 
@@ -39,7 +39,48 @@ function ProjectPage() {
         // projectCreator: project?.userID || "",
     });
     const [showUpdateForm, setShowUpdateForm ] = useState(false);
-    
+    const [creatorName, setCreatorName] = useState(null);
+    const [pledgeUsernames, setPledgeUsernames] = useState({});
+
+    useEffect(() => {
+        // Fetch creator's username when project data is available
+        const fetchCreatorName = async () => {
+            if (project?.owner) {
+                try {
+                    const response = await fetch(`${import.meta.env.VITE_API_URL}/users/public/${project.owner}/`);
+                    const data = await response.json();
+                    setCreatorName(data.username);
+                } catch (error) {
+                    console.error("Error fetching creator name:", error);
+                }
+            }
+        };
+
+        fetchCreatorName();
+    }, [project?.owner]);
+
+    useEffect(() => {
+        const fetchPledgeUsernames = async () => {
+            if (project?.pledges) {
+                const usernames = {};
+                for (const pledge of project.pledges) {
+                    if (!pledge.anonymous) {
+                        try {
+                            const response = await fetch(`${import.meta.env.VITE_API_URL}/users/public/${pledge.supporter}/`);
+                            const data = await response.json();
+                            usernames[pledge.supporter] = data.username;
+                        } catch (error) {
+                            console.error("Error fetching supporter name:", error);
+                        }
+                    }
+                }
+                setPledgeUsernames(usernames);
+            }
+        };
+
+        fetchPledgeUsernames();
+    }, [project?.pledges]);
+
     if (isLoading) {
         return (<p>loading...</p>)
     }
@@ -90,15 +131,15 @@ function ProjectPage() {
         <br />
 
         <div className="project-creator">
-  <h3>Created By:</h3>
-  {user ? (
-    <p>{user.username}</p>  
-  ) : (
-    <p>To be able to display username here i need to update my backend, so the username will be available to the pablic...</p>
-  )}
-</div>
+            <h3>Created By:</h3>
+            {creatorName ? (
+                <p>{creatorName}</p>
+            ) : (
+                <p>Loading creator...</p>
+            )}
+        </div>
 
-<div className="support-button">
+        <div className="support-button">
                 <Link to ={`/project/${project.id}/pledge`} className="pledge-link">
                 <button >
                 Kick This Dream
@@ -118,8 +159,19 @@ function ProjectPage() {
                 <h3>Pledges:</h3>
                 <ul>
                     {project.pledges.map((pledgeData, key) => (
-                        <li key={key}>
-                            {pledgeData.amount} from {pledgeData.supporter}
+                        <li key={key} className="pledge-item">
+                            <div className="pledge-amount">
+                                ${pledgeData.amount} from {
+                                    pledgeData.anonymous 
+                                        ? "Anonymous" 
+                                        : (pledgeUsernames[pledgeData.supporter] || "Loading...")
+                                }
+                            </div>
+                            {pledgeData.comment && (
+                                <div className="pledge-comment">
+                                    "{pledgeData.comment}"
+                                </div>
+                            )}
                         </li>
                     ))}
                 </ul>

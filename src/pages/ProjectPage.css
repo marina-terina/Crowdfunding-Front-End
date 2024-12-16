@@ -1,6 +1,3 @@
-
-
-
 .project-card-container {
     display: flex;
     justify-content: center;
@@ -68,4 +65,37 @@ h3, p, ul {
 
 .pledges-section {
     margin-top: 30px;
+}
+
+.pledge-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.pledge-amount {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.pledge-comment {
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #666;
+}
+
+.project-creator {
+    display: flex;
+    align-items: center;
+    gap: 10px;  /* Space between heading and name */
+}
+
+.project-creator h3 {
+    margin: 0;  /* Remove default margin */
+}
+
+.project-creator p {
+    margin: 0;  /* Remove default margin */
+    color: #4CAF50;  /* Optional: make the username stand out */
+    font-weight: 500;  /* Optional: make it slightly bold */
 }

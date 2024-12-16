@@ -4,6 +4,7 @@ import { postPledge } from "../api/post-pledge";
 import "./CreatePledge.css";
 import { useEffect } from "react";
 import useAuth from "../hooks/use-auth";
+import confetti from 'canvas-confetti';
 
 function CreatePledge() {
     const { auth } = useAuth();
@@ -30,6 +31,7 @@ function CreatePledge() {
         reward: false,
         projectId: "",
     });
+    const [showThankYou, setShowThankYou] = useState(false);
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
@@ -46,64 +48,97 @@ function CreatePledge() {
         }));
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        await postPledge(formData.amount,formData.comment, formData.isAnonymous, formData.reward, projectId)
-            // .then(res => {console.log({res})})
-            // .catch(e => {console.log({e})})
-
-        navigate (`/project/${projectId}`);
-        
+    const triggerConfetti = () => {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']
+        });
     };
 
-return (
-    <form className="create-pledge-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-            <label htmlFor="amount">Amount:</label>
-            <input
-                type="number"
-                id="amount"
-                placeholder="Enter amount"
-                value={formData.amount}
-                onChange={handleChange}
-                required
-            />
-        </div>
-        <div className="form-group">
-            <label htmlFor="comment">Comment:</label>
-            <textarea
-                id="comment"
-                placeholder="Add a comment (optional)"
-                value={formData.comment}
-                onChange={handleChange}
-            ></textarea>
-        </div>
-        <div className="checkbox-group">
-            <label>
-                <input
-                    type="checkbox"
-                    id="isAnonymous"
-                    checked={formData.isAnonymous}
-                    onChange={handleChange}
-                />
-                Make this pledge anonymous
-            </label>
-        </div>
-        <div className="checkbox-group">
-            <label>
-                <input
-                    type="checkbox"
-                    id="reward"
-                    checked={formData.reward}
-                    onChange={handleChange}
-                />
-                Accept reward
-            </label>
-        </div>
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await postPledge(
+                formData.amount,
+                formData.comment,
+                formData.isAnonymous,
+                formData.reward,
+                projectId
+            );
+            triggerConfetti();
+            setShowThankYou(true);
+        } catch (error) {
+            console.error("Error creating pledge:", error);
+        }
+    };
 
-        <button type="submit">Submit Pledge</button>
-    </form>
-);
+    if (showThankYou) {
+        return (
+            <div className="thank-you-message">
+                <h2>Thank You for Your Support! 🎉</h2>
+                <p>Your pledge means the world to us!</p>
+                <div className="navigation-links">
+                    <Link to={`/project/${projectId}`} className="back-to-project">
+                        Back to Project
+                    </Link>
+                    <Link to="/" className="back-to-home">
+                        Back to Home
+                    </Link>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <form className="create-pledge-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+                <label htmlFor="amount">Amount:</label>
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Enter amount"
+                    value={formData.amount}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="comment">Comment:</label>
+                <textarea
+                    id="comment"
+                    placeholder="Add a comment (optional)"
+                    value={formData.comment}
+                    onChange={handleChange}
+                ></textarea>
+            </div>
+            <div className="checkbox-group">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="isAnonymous"
+                        checked={formData.isAnonymous}
+                        onChange={handleChange}
+                    />
+                    Make this pledge anonymous
+                </label>
+            </div>
+            <div className="checkbox-group">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="reward"
+                        checked={formData.reward}
+                        onChange={handleChange}
+                    />
+                    Accept reward
+                </label>
+            </div>
+
+            <button type="submit">Submit Pledge</button>
+        </form>
+    );
 }
 
 export default CreatePledge;

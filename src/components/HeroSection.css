@@ -135,8 +135,8 @@ p {
 button {
     padding: 10px 20px;
     border: none;
-    background-color:#ee8a2c;
-    color:#ee8a2c;
+    background-color: #ee8a2c;
+    color: white;
     font-size: 1.2rem;
     border-radius: 5px;
     cursor: pointer;
@@ -144,6 +144,29 @@ button {
 }
 
 button:hover {
+    background-color: #218838;
+    color: white;
+}
+
+/* Style the Link component */
+.hero-section a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Style the button inside the Link */
+.hero-section button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ee8a2c;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.hero-section button:hover {
     background-color: #218838;
     color: white;
 }
