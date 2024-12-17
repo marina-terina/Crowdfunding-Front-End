@@ -58,7 +58,6 @@
 
   .navbar a {
     text-decoration: none;
-    color: #fff;
     font-weight: 600;
     transition: all 0.3s ease;
     display: inline-block;
@@ -86,4 +85,22 @@
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5),
                0 0 30px rgba(255, 0, 255, 0.3);
     transform: translateY(-2px) scale(1.05);
+  }
+
+  .nav-left a,
+  .nav-right a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .nav-left a:hover,
+  .nav-right a:hover {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7),
+                 0 0 20px rgba(255, 0, 255, 0.5),
+                 0 0 30px rgba(0, 255, 255, 0.3);
+    transform: scale(1.1);
   }

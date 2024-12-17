@@ -105,6 +105,7 @@ function ProjectPage() {
             });
     }
     const isOwner = auth.userId === project.owner;
+    
     return (
         
         <div className="project-card-container">
