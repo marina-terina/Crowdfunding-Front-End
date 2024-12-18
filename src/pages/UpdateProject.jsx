@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useCreateProject from "../hooks/create-projects";
 import updateProject from "../api/update-project";
 
+
 function UpdateProject(props) {
     const {project} = props;
     const navigate = useNavigate();  
@@ -55,7 +56,7 @@ function UpdateProject(props) {
                 />
             </div>
 
-            <div>
+            <div className="form-group">
                 <label htmlFor="description">Description:</label>
                 <textarea
                     id="description"
@@ -66,7 +67,7 @@ function UpdateProject(props) {
                 />
             </div>
 
-            <div>
+            <div className="form-group">
                 <label htmlFor="goal">Goal (Amount):</label>
                 <input
                     type="number"
@@ -78,34 +79,36 @@ function UpdateProject(props) {
                 />
             </div>
 
-            <div>
-                <label htmlFor="reward">Reward:</label>
-                <input
-                    type="text"
-                    id="reward"
-                    placeholder="Enter reward for backers"
-                    value={updateProjectData.reward}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
+                <div className="form-group">
+                    <label htmlFor="reward">Reward:</label>
+                    <input
+                        type="text"
+                        id="reward"
+                        placeholder="Enter reward for backers"
+                        value={updateProjectData.reward}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
 
-            <div>
-                <label htmlFor="image">Image URL:</label>
-                <input
-                    type="url"
-                    id="image"
-                    placeholder="Enter image URL"
-                    value={updateProjectData.image}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
+                <div className="form-group">
+                    <label htmlFor="image">Image URL:</label>
+                    <input
+                        type="url"
+                        id="image"
+                        placeholder="Enter image URL"
+                        value={updateProjectData.image}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
 
-            
+                
 
-            <button type="submit">Update Project</button>
-        </form>
+                <button type="submit">Update Project</button>
+            </form>
+        
+        
     );
 }
 

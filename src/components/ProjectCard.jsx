@@ -55,9 +55,11 @@ function ProjectCard({ projectData }) {
 
                 <div className="progress-container">
                     <div 
-                        className="progress-bar" 
+                        className="progress-fill" 
                         style={{ width: `${pledgePercentage}%` }}
-                    ></div>
+                    >
+                    
+                    </div>
                 </div>
 
                 <div className="progress-info">

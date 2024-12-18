@@ -2,6 +2,7 @@ import useProjects from "../hooks/use-projects";
 import ProjectCard from "../components/ProjectCard";
 import HeroSection from '../components/HeroSection';
 import "./HomePage.css";
+import Footer from "../components/Footer";
 
 
 function HomePage() {
@@ -46,8 +47,9 @@ if (isLoading) {
                     })}
                 </div>
         </section>
+        <Footer />
     </div>
 );   
 }
-
+ 
 export default HomePage;

@@ -118,12 +118,15 @@
     font-weight: 600;
     transition: all 0.3s ease;
     margin-top: 60px;
+    width: 100%;
+    cursor: pointer;
   }
 
   .cta-link:hover {
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.5),
                0 0 40px rgba(255, 0, 255, 0.3);
-    transform: translateY(-3px);
+    /* transform: translateY(-3px); */
+    transform: scale(1.05);
   }
 
 

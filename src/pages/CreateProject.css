@@ -1,15 +1,13 @@
-.create-project-container {
-    background-color:#c1e9fa;
-}
 
 .create-project-form {
     background-image: none;
     max-width: 60%;
     margin: 0 auto;
     padding: 50px 30px;
-    background-color:#c1e9fa;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    margin-top: 70px;
     
 }
 
@@ -17,6 +15,9 @@
     text-align: center;
     margin-bottom: 30px;
     font-size: 2rem;
+    background: linear-gradient(45deg, #0ff, #f0f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     
 }
 
@@ -31,7 +32,7 @@
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #333;
+    color: rgba(255, 255, 255, 0.8);
     text-align: left; 
 }
 
@@ -39,10 +40,12 @@
 .form-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
     box-sizing: border-box;
     display: block;
 }
@@ -50,7 +53,8 @@
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #fe4f01;
+    border-color: #0ff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
 }
 
 .form-group textarea {
@@ -62,11 +66,11 @@
 .login-message {
     text-align: center;
     padding: 20px;
-    margin: 100px auto;
+    margin: 200px auto;
     max-width: 400px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #f8f9fa;
+    
 }
 
 .login-message h2 {
@@ -74,3 +78,7 @@
     margin-bottom: 15px;
 }
 
+.createProject-button {
+    width: 100%;
+    font-size: 1rem;
+}

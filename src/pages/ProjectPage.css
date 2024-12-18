@@ -1,46 +1,43 @@
 .project-card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#c1e9fa;
-    
-}
-
-.projectPage-card {
+    background-color: black;
+    position: relative;
     width: 60%;
-    max-width: 100% ;
-
-}
-.project-description {
-    padding: 20px;
-    background-color:#c1e9fa;
-
+    margin: 70px auto;
+    padding: 2rem;
 }
 
 .projectPage-image {
-    width: 100%; /* Make the image fill the container's width */
-    height: 400px; /* Maintain the aspect ratio of the image */
-    object-fit: cover; /* Ensure the image covers the space without distortion */
-    border-radius: 8px;
-    display: block; /* Ensures no extra space under the image */
+    width: 100%; 
+    height: 300px;
+    object-fit: cover; 
+    border-radius: 0px;
+    display: block; 
     margin-top: 2rem;
 }
 
 .project-title {
     font-size: 2rem;
-    font-weight: bold;
-    margin: 15px;
+    font-weight: 600;
+    background: linear-gradient(45deg, #0ff, #f0f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0.5rem 0rem;
 }
 
 h3 {
     margin-top: 10px;
     font-size: 1.2rem;
     font-weight: bold;
+    /* color:  rgba(255, 255, 255, 0.6); */
+    background: linear-gradient(45deg, #0ff, #f0f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0.5rem 0rem;
 }
 
 p {
     font-size: 1rem;
-    color: #555;
+    color: white;
 }
 
 ul {
@@ -94,8 +91,161 @@ h3, p, ul {
     margin: 0;  /* Remove default margin */
 }
 
-.project-creator p {
-    margin: 0;  /* Remove default margin */
-    color: #4CAF50;  /* Optional: make the username stand out */
-    font-weight: 500;  /* Optional: make it slightly bold */
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
+
+
+
+  .project-description {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+  }
+
+  .project-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+  }
+
+  .meta-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .meta-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .creator-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+  }
+
+  .support-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+  }
+
+  .support-button {
+    background: linear-gradient(45deg, #0ff, #f0f);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .support-button:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+.support-button p {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.support-button a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0ff, #f0f);
+    border-radius: 4px;
+    width: 75%;
+  }
+
+  .pledges-section {
+    margin-top: 3rem;
+  }
+  .pledges-section h2 {
+    color: #0ff;
+    margin-bottom: 15px;
+  }
+
+  .pledges-section ul {
+    list-style-type: none;
+  }
+
+  .pledge-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+  }
+
+  .pledge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .supporter-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pledge-amount {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0ff;
+  }
+
+  .reward-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+  }
+.owner-support-button {
+    display: flex;
+    justify-content: center;
+}
+  @media (max-width: 768px) {
+    .project-header {
+      grid-template-columns: 1fr;
+    }
+    
+    .project-image {
+      height: 300px;
+    }
+    
+    .project-meta {
+      grid-template-columns: 1fr;
+    }
+  }

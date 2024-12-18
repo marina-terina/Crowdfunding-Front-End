@@ -26,6 +26,7 @@
     text-align: center;
     padding-top: 20px;
     border-radius: 25px;
+    margin-bottom: 30px;
 }
 
 .projects-container h2 span {
@@ -62,6 +63,10 @@ section.features {
 
 .feature-card:hover {
     transform: translateY(-10px);
+}
+
+.feature-card p {
+    color: #333
 }
 
 .feature-icon {

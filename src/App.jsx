@@ -39,7 +39,7 @@ function App() {
             <NavBar />
             <HeroSection />
             <div className="project-container">
-                {/* Your project cards and other content */}
+    
             </div>
         </div>
     );

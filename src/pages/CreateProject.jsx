@@ -4,6 +4,7 @@ import useCreateProject from "../hooks/create-projects";
 import createProject from "../api/create-project";
 import "./CreateProject.css";
 import useAuth from "../hooks/use-auth";
+import Footer from "../components/Footer";
 
 function CreateProject() {
     const { auth } = useAuth();
@@ -58,14 +59,14 @@ function CreateProject() {
         <form className="create-project-form" onSubmit={handleSubmit}>
 
 
-            <h2>Create Your Project</h2>
+            <h2>Create Your Dream Project</h2>
             
             <div className="form-group">
-                <label htmlFor="title">Title:</label>
+                <label htmlFor="title">Project Title:</label>
                 <input
                     type="text"
                     id="title"
-                    placeholder="Enter project title"
+                    placeholder="Enter your project title"
                     value={newProject.title}
                     onChange={handleChange}
                     required
@@ -73,10 +74,10 @@ function CreateProject() {
             </div>
 
             <div className="form-group">
-                <label htmlFor="description">Description:</label>
+                <label htmlFor="description">Project Description:</label>
                 <textarea
                     id="description"
-                    placeholder="Enter project description"
+                    placeholder="Describe your amazing project"
                     value={newProject.description}
                     onChange={handleChange}
                     required
@@ -84,11 +85,11 @@ function CreateProject() {
             </div>
 
             <div className="form-group">
-                <label htmlFor="goal">Goal (Amount):</label>
+                <label htmlFor="goal">Funding Goal (Amount):</label>
                 <input
                     type="number"
                     id="goal"
-                    placeholder="Enter funding goal"
+                    placeholder="$ Enter amount"
                     value={newProject.goal}
                     onChange={handleChange}
                     required
@@ -96,11 +97,11 @@ function CreateProject() {
             </div>
 
             <div className="form-group">
-                <label htmlFor="reward">Reward:</label>
+                <label htmlFor="reward">Reward Description:</label>
                 <input
                     type="text"
                     id="reward"
-                    placeholder="Enter reward for backers"
+                    placeholder="What will supporter receive"
                     value={newProject.reward}
                     onChange={handleChange}
                     required
@@ -121,8 +122,9 @@ function CreateProject() {
 
             
 
-            <button type="submit">Create Project</button>
+            <button className = "createProject-button" type="submit">Kickstart Your Dream Project</button>
         </form>
+        <Footer />
         </div>
     );
 }

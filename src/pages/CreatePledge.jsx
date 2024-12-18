@@ -1,21 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { postPledge } from "../api/post-pledge";
 import "./CreatePledge.css";
-import { useEffect } from "react";
 import useAuth from "../hooks/use-auth";
 import confetti from 'canvas-confetti';
+import useProject from "../hooks/use-project";
+import Footer from "../components/Footer";
 
 function CreatePledge() {
     const { auth } = useAuth();
     const navigate = useNavigate();  
     const { projectId } = useParams();
+    const { project, isLoading, error } = useProject(projectId);
+    const [creatorName, setCreatorName] = useState(null);
+
+    useEffect(() => {
+        const fetchCreatorName = async () => {
+            if (project?.owner) {
+                try {
+                    const response = await fetch(`${import.meta.env.VITE_API_URL}/users/public/${project.owner}/`);
+                    const data = await response.json();
+                    setCreatorName(data.username);
+                } catch (error) {
+                    console.error("Error fetching creator name:", error);
+                }
+            }
+        };
+
+        fetchCreatorName();
+    }, [project?.owner]);
 
     if (!auth.token) {
         return (
             <div className="login-message">
-                <h2>Oops! Almost there!d</h2>
-                <p>You're just one step away from supporting something amazing! But first, we need you to log in. Don’t worry—if you prefer, you can still pledge anonymously! Log in now and let’s make your pledge count! </p>
+                <h2>Oops! Almost there!</h2>
+                <p>You're just one step away from supporting something amazing! But first, we need you to log in. Don't worry—if you prefer, you can still pledge anonymously! Log in now and let's make your pledge count! </p>
                 <button onClick={() => navigate('/login')}>Go to Login</button>
                 <p className="signup-prompt">
                     Don't have an account? <Link to="/signup">Sign up here</Link>
@@ -92,52 +111,67 @@ function CreatePledge() {
     }
 
     return (
-        <form className="create-pledge-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-                <label htmlFor="amount">Amount:</label>
-                <input
-                    type="number"
-                    id="amount"
-                    placeholder="Enter amount"
-                    value={formData.amount}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div className="form-group">
-                <label htmlFor="comment">Comment:</label>
-                <textarea
-                    id="comment"
-                    placeholder="Add a comment (optional)"
-                    value={formData.comment}
-                    onChange={handleChange}
-                ></textarea>
-            </div>
-            <div className="checkbox-group">
-                <label>
-                    <input
-                        type="checkbox"
-                        id="isAnonymous"
-                        checked={formData.isAnonymous}
-                        onChange={handleChange}
-                    />
-                    Make this pledge anonymous
-                </label>
-            </div>
-            <div className="checkbox-group">
-                <label>
-                    <input
-                        type="checkbox"
-                        id="reward"
-                        checked={formData.reward}
-                        onChange={handleChange}
-                    />
-                    Accept reward
-                </label>
-            </div>
+        <>
+            <form className="create-pledge-form" onSubmit={handleSubmit}>
+                <div className="pledge-header">
+                    <h2 className="pledge-title">Make a Pledge</h2>
+                </div>
+                <div className="project-section">   {/* Project Reward */}
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="meta-value">{creatorName}</p> 
+                </div>
+                <div className="reward-section">   {/* Project Reward */}
+                    <h3>Reward:</h3>
+                    <p>{project.reward}</p> 
+                </div>
 
-            <button type="submit">Submit Pledge</button>
-        </form>
+                <div className="form-group">
+                    <label htmlFor="amount">Pledge Amount ($):</label>
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount"
+                        value={formData.amount}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="comment">Comment (Optional):</label>
+                    <textarea
+                        id="comment"
+                        placeholder="Leave a message of support..."
+                        value={formData.comment}
+                        onChange={handleChange}
+                    ></textarea>
+                </div>
+                <div className="checkbox-group">
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="isAnonymous"
+                            checked={formData.isAnonymous}
+                            onChange={handleChange}
+                        />
+                        Make my pledge anonymous
+                    </label>
+                </div>
+                <div className="checkbox-group">
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="reward"
+                            checked={formData.reward}
+                            onChange={handleChange}
+                        />
+                        I would like to receive the reward for this tier
+                    </label>
+                </div>
+
+                <button type="submit">Submit Pledge</button>
+            </form>
+            <Footer />
+        </>
     );
 }
 

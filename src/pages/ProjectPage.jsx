@@ -8,8 +8,16 @@ import useAuth from "../hooks/use-auth.js";
 import { useState, useEffect } from "react";
 import UpdateProject from "./UpdateProject.jsx";
 import useUser from "../hooks/use-user.js";
+import Footer from "../components/Footer";
 
-
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  }
 
 function ProjectPage() {
     const {auth, setAuth} = useAuth();
@@ -106,100 +114,125 @@ function ProjectPage() {
     }
     const isOwner = auth.userId === project.owner;
     
+    const currentAmount = project?.pledges?.reduce(
+        (total, pledge) => total + pledge.amount,
+        0
+    );
+
+    const pledgePercentage = (currentAmount / project?.goal) * 100;
+    
     return (
-        
-        <div className="project-card-container">
-            <div className="projectPage-card">
-                {/* Project Image */}
-                <img className="projectPage-image"
-                    src={project.image} 
-                    alt={`Image for ${project.title}`} 
+        <>
+            <div className="project-card-container">
+                <div class="project-card-header">
+                    <div class="project-card-main-content">
+                        {/* Project Image */}
+                        <img className="projectPage-image"
+                            src={project.image} 
+                            alt={`Image for ${project.title}`} 
+                            
+                        />
+
+                        {/* Project Title */}
+                        <h2 className="project-title">{project.title}</h2>
+                        
+                        {/* Project Description */}
+                        <p class="project-description">{project.description}</p> 
+                        <div className="project-meta">
+                        <div className="meta-item">
+                    <div className="meta-label">Project Creator:</div>
+                    <div className="meta-value">{creatorName ? (
+                        <p>{creatorName}</p>
+                    ) : (
+                        <p>Loading creator...</p>
+                    )}
+                    </div>
+                  </div>
+                  <div className="meta-item">
+                    <div className="meta-label">Created at</div>
+                    <div className="meta-value">{formatDate(project.date_created)}</div>
+                  </div>
+                  <div className="meta-item">
+                    <div className="meta-label">Goal Amount:</div>
+                    <div className="meta-value">{project.goal}</div>
+                  </div>
+                  <div className="meta-item">
+                    <div className="meta-label">Status</div>
+                    <div className="meta-value">{project.is_open ? "Open" : "Closed"}</div>
+                  </div>
+                  </div>
+                  <div className="reward-section">   {/* Project Reward */}
+                        <h3>Reward:</h3>
+                        <p>{project.reward}</p> 
+                    </div>
+                  
+                <div className="support-section">
+                <h3>Support This Project</h3>
+                <div className="progress-bar">
+                  <div className="progress-fill"></div>
+                </div>
+                <div className="amount-row">
+                            <span className="current-amount">
+                                ${currentAmount?.toLocaleString()}
+                            </span>
+                            <span className="goal-amount">
+                                of ${project.goal?.toLocaleString()}
+                            </span>
+                        </div>
+                        <div className="support-button">
+                        <Link to ={`/project/${project.id}/pledge`} className="pledge-link">
+                        <p>Kick This Dream</p>
+                        </Link>
+                        </div>
+              </div>
+              </div>
+                      
+
+            <div class="pledges-section">
+                <h2>Recent Pledges</h2>
+                    <div className="pledges-card">
+                    <div>
+                    <ul>
+              {project.pledges.map((pledgeData, key) => (
+                <li key={key} className="pledge-card">
+                  <div className="pledge-header">
+                    <div className="meta-value">
+                      {pledgeData.anonymous
+                        ? "Anonymous"
+                        : pledgeUsernames[pledgeData.supporter] || "Loading..."}
+                    </div>
+                    <div className="pledge-amount">${pledgeData.amount}</div>
+                  </div>
+                  {pledgeData.comment && <p className="pledge-comment">{pledgeData.comment}</p>}
+                </li>
+              ))}
+            </ul>
+            </div>
+            </div>
                     
-                />
-            <div className="project-description"> 
-                {/* Project Title */}
-                <h2 className="project-title">{project.title}</h2>
-                
-                {/* Project Description */}
-                <p>{project.description}</p> 
 
-                {/* Project Reward */}
-                <h3>Reward:</h3>
-                <p>{project.reward}</p> 
-
-                {/* Project Goal */}
-                <h3>Goal:{project.goal}</h3>
-        <br />
-
-        <div className="project-creator">
-            <h3>Created By:</h3>
-            {creatorName ? (
-                <p>{creatorName}</p>
-            ) : (
-                <p>Loading creator...</p>
-            )}
-        </div>
-
-        <div className="support-button">
-                <Link to ={`/project/${project.id}/pledge`} className="pledge-link">
-                <button >
-                Kick This Dream
-                </button>
-                </Link>
-                </div>
-
-
-                <div className="project-info">
-                    <h3>Created at: {project.date_created}</h3>
-                    <h3>{`Status: ${project.is_open ? "Open" : "Closed"}`}</h3>
-                </div>
-
-                
-                
-                <div className="pledges-section">
-                <h3>Pledges:</h3>
-                <ul>
-                    {project.pledges.map((pledgeData, key) => (
-                        <li key={key} className="pledge-item">
-                            <div className="pledge-amount">
-                                ${pledgeData.amount} from {
-                                    pledgeData.anonymous 
-                                        ? "Anonymous" 
-                                        : (pledgeUsernames[pledgeData.supporter] || "Loading...")
-                                }
-                            </div>
-                            {pledgeData.comment && (
-                                <div className="pledge-comment">
-                                    "{pledgeData.comment}"
-                                </div>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-                </div>
-                </div>  
-{showUpdateForm ?
-<UpdateProject project={project} />
-: null}
-
-<div className="support-button">
+        {showUpdateForm ? (
+            <UpdateProject project={project} />
+        ) : (
+            <div className="owner-support-button">
                 {auth.token && isOwner ? (
                     <button className="update-pledge-btn" onClick={handleUpdate}>
-                    Update this Dream
+                        Update this Dream
                     </button>  
-                    ) : null}
+                ) : null}
 
                 {auth.token && isOwner ? (
                     <button className="delete-pledge-btn" onClick={handleDelete}>
-                    Delete this Dream
+                        Delete this Dream
                     </button>  
-                    ) : null}
-
-                
-            
-</div>  
+                ) : null}
             </div>
-        </div>
+        )}
+            </div>
+            </div>
+            </div>
+            <Footer />
+        </>
     );
 }
 

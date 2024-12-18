@@ -1,16 +1,29 @@
 .create-pledge-form {
     max-width: 500px;
-    margin: 2rem auto;
+    margin: 150px auto;
     padding: 2rem;
-    background-color: #fff;
+    background-color: black;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.1);
 }
 
 .create-pledge-form div {
     margin-bottom: 1.5rem;
 }
 
+.pledge-title{
+    font-size: 2rem;
+}
+
+.project-title {
+    text-align: left;
+}
+.project-created {
+    text-align: left;
+}
+.pledge-reward-section {
+    text-align: left;
+}
 .create-pledge-form label {
     display: block;
     margin-bottom: 0.5rem;
@@ -32,13 +45,17 @@
 }
 
 .create-pledge-form .checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+width: 100%;
+}
+
+.checkbox-group label {
+    padding: 10px;
+    color: white;
 }
 
 .create-pledge-form .checkbox-group label {
     margin-bottom: 0;
+    text-align: left;
 }
 
 .create-pledge-form input[type="checkbox"] {
@@ -49,19 +66,20 @@
     text-align: center;
     padding: 2rem;
     max-width: 500px;
-    margin: 2rem auto;
-    background: white;
+    margin: 15rem auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.5s ease-in;
 }
 
 .thank-you-message h2 {
-    color: #4CAF50;
     margin-bottom: 1rem;
+    background: linear-gradient(45deg, #0ff, #f0f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .thank-you-message p {
-    color: #666;
+    color:white;
     margin: 0.5rem 0;
 }
 
@@ -91,12 +109,12 @@
 }
 
 .back-to-project {
-    background-color: #4CAF50;
+    background: linear-gradient(45deg, #0ff, #f0f);
     color: white;
 }
 
 .back-to-home {
-    background-color: #f5f5f5;
+    background: linear-gradient(45deg, #0ff, #f0f);
     color: #333;
 }
 

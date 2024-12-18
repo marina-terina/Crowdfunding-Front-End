@@ -15,7 +15,7 @@ function HeroSection() {
                 </div>
            
                 <Link to="/createProject">
-                    <button type="button" className="cta-link">Get Started</button>
+                    <button className="cta-link">Get Started</button>
                 </Link>
             </div>
             <div className="hero-image">
