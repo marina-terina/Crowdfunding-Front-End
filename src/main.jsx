@@ -11,6 +11,7 @@ import CreateProject from "./pages/CreateProject.jsx";
 import { AuthProvider } from "./components/AuthProvider.jsx";
 import CreatePledge from "./pages/CreatePledge.jsx";
 import HowItWorks from "./pages/HowItWorks.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
           { path: "/project/:projectId/pledge", element: <CreatePledge/> },
           { path: "/project/:id", element: <ProjectPage /> },
           { path: "/howitworks", element: <HowItWorks /> },
+          { path: "/dashboard", element: <Dashboard /> },
       ],
   },
 ]);

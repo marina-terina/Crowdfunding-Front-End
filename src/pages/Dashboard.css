@@ -1,0 +1,283 @@
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: white;
+    margin-top: 100px;
+}
+
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.dashboard-section {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.dashboard-section h2 {
+    color: #0ff;
+    margin-bottom: 1rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 1rem;
+}
+
+.project-info h3 {
+    color: #0ff;
+    margin-bottom: 0.5rem;
+}
+
+.project-description {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.project-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.view-project-btn {
+    background: linear-gradient(45deg, #0ff, #f0f);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+}
+
+.view-project-btn:hover {
+    transform: scale(1.05);
+}
+
+.no-projects {
+    text-align: center;
+    padding: 2rem;
+    color: white;
+}
+
+.create-project-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #0ff, #f0f);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.create-project-btn:hover {
+    transform: scale(1.05);
+}
+
+.project-progress {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.pledged-amount {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0ff;
+}
+
+.goal-amount {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #0ff, #f0f);
+    transition: width 0.3s ease;
+}
+
+.progress-percentage {
+    text-align: right;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.support-section {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0ff, #f0f);
+    transition: width 0.3s ease;
+}
+
+.amount-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.current-amount {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0ff;
+}
+
+.goal-amount {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.pledges-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+    max-width: 800px;
+}
+
+.pledge-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pledge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.project-link {
+    color: #0ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+.pledge-amount {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0ff;
+}
+
+.pledge-comment {
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.pledge-date {
+    font-size: 0.9rem;
+    color: #999;
+    text-align: right;
+}
+
+.reward-section {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 4px;
+    border-left: 3px solid #0ff;
+}
+
+.reward-section h4 {
+    color: #0ff;
+    margin-bottom: 0.5rem;
+}
+
+.pledge-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.view-project-btn {
+    background: linear-gradient(45deg, #0ff, #f0f);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+}
+
+.view-project-btn:hover {
+    transform: scale(1.05);
+} 

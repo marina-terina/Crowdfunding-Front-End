@@ -22,9 +22,12 @@ const handleLogout = () => {
                 </div>
                 <div className = "nav-right">
                 {auth.token ? (
-                    <Link to="/" onClick={handleLogout}>
-                        Log Out
-                    </Link>
+                    <>
+                        <Link to="/dashboard">Dashboard</Link>
+                        <Link to="/" onClick={handleLogout}>
+                            Log Out
+                        </Link>
+                    </>
                     ) : (
                     <Link className="login-button" to="/login">Login</Link>
                 )}

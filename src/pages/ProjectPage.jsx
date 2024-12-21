@@ -35,7 +35,7 @@ function ProjectPage() {
     console.log('Auth user ID:', auth.userId);
     console.log('Project owner:', project?.owner);
     
-    const isOwner = auth.userId === project?.owner;
+    const isOwner = Number(auth.userId) === Number(project?.owner);
     console.log('Is owner?', isOwner);
 
     const [formData, setFormData] = useState({
