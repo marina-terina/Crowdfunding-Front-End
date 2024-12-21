@@ -14,7 +14,6 @@ function ProjectCard({ projectData }) {
                 const project = await getProject(projectData.id);
                 console.log("Project data received:", project);
                 
-                // Calculate total from pledges array
                 const totalAmount = project.pledges?.reduce((sum, pledge) => 
                     sum + Number(pledge.amount), 0) || 0;
                     
@@ -31,7 +30,6 @@ function ProjectCard({ projectData }) {
         }
     }, [projectData.id]);
 
-    // Calculate pledge percentage
     const pledgePercentage = (currentAmount / projectData.goal) * 100;
 
     return (

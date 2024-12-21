@@ -46,27 +46,7 @@ function LoginForm() {
     if (isInvalidUser) {
         return (
             <form>
-                {/* <h2>Welcome Back! Log in to Kickstart!</h2>
-                <div>
-                    <input
-                        type="text"
-                        id="username"
-                        placeholder="Username"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Password"
-                        onChange={handleChange}
-                    />
-                </div> */}
                 <div className="error-message">User does not exist. Please sign up to get started</div>
-                    {/* <button type="submit" onClick={handleSubmit}>
-                        Login
-                    </button> */}
                     <div className="signup-prompt">
                         <Link to="/signup">Sign Up Here</Link>
                     </div>
@@ -101,8 +81,6 @@ function LoginForm() {
             </form>
             );
     }
-    
-    
 }
 
 export default LoginForm;

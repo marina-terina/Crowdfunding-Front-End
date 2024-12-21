@@ -73,6 +73,7 @@ Kickaroo is a crowdfunding platform designed to help people bring their wildest,
 - ![Homepage Overview](./relative/image/HomePage.png)
 - ![Project Creation Form](./relative/image/Create_project.png)
 - ![Pledge Creation Interface](./relative/image/Pledge.png)
+- ![Project Page](./relative/image/ProjectPage.png)
 
 #### Authentication & User Management
 - ![Login Interface](./relative/image/Login.png)
@@ -86,6 +87,8 @@ Kickaroo is a crowdfunding platform designed to help people bring their wildest,
 
 #### Project Management
 - ![Project Edit and Delete Options](./relative/image/Update_delete.png)
+- ![Project Update Options](./relative/image/UpdateProject.png)
+- ![Thank You Message for creating a pledge](./relative/image/ThankYou.png)
 
 
 # React + Vite

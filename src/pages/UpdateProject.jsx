@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import useCreateProject from "../hooks/create-projects";
 import updateProject from "../api/update-project";
 
-
 function UpdateProject(props) {
     const {project} = props;
     const navigate = useNavigate();  
@@ -26,8 +25,6 @@ function UpdateProject(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // const {project, isLoading, error}updateProjectData.title, updateProjectData. = useCreateProject(newProject.title, newProject.description, newProject.goal, newProject.reward, newProject.image)
-        // console.log("Project Created:", project);
         updateProject(project.id, updateProjectData)
     .then((res) => {
         navigate(0);
@@ -101,9 +98,7 @@ function UpdateProject(props) {
                         onChange={handleChange}
                         required
                     />
-                </div>
-
-                
+                </div>  
 
                 <button type="submit">Update Project</button>
             </form>
@@ -111,6 +106,5 @@ function UpdateProject(props) {
         
     );
 }
-
 
 export default UpdateProject;

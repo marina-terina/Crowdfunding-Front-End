@@ -8,8 +8,6 @@ import Footer from "../components/Footer";
 function HomePage() {
     const { projects, isLoading, error } = useProjects();
 
-    //console.log(isLoading)
-
 if (isLoading) {
         return (<p>loading...</p>)
     }
@@ -18,7 +16,6 @@ if (isLoading) {
         return (<p>{error.message}</p>)
     }
     
-
     return (
     <div>
             <HeroSection />
@@ -51,5 +48,5 @@ if (isLoading) {
     </div>
 );   
 }
- 
+
 export default HomePage;

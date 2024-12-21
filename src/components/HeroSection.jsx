@@ -13,7 +13,7 @@ function HeroSection() {
                     <div>No idea is too wild, no dream too bizarre!<br/></div>
                     <div>Achieve your dreams, inspire others<br /> </div>
                 </div>
-           
+
                 <Link to="/createProject">
                     <button className="cta-link">Get Started</button>
                 </Link>

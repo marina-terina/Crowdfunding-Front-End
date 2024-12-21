@@ -1,4 +1,5 @@
 import './Footer.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -36,17 +37,25 @@ const Footer = () => {
         <div className="footer-section">
           <h3 className="footer-title">Connect</h3>
           <div className="social-links">
-            <a href="#" className="social-link" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
+            <a href="#" className="social-link" aria-label="Instagram">
+              <i className="fab fa-instagram"></i>
+              <span className="social-name">Instagram</span>
             </a>
             <a href="#" className="social-link" aria-label="Facebook">
               <i className="fab fa-facebook"></i>
+              <span className="social-name">Facebook</span>
             </a>
-            <a href="#" className="social-link" aria-label="Instagram">
-              <i className="fab fa-instagram"></i>
+            <a href="#" className="social-link" aria-label="TikTok">
+              <i className="fab fa-tiktok"></i>
+              <span className="social-name">TikTok</span>
+            </a>
+            <a href="#" className="social-link" aria-label="YouTube">
+              <i className="fab fa-youtube"></i>
+              <span className="social-name">YouTube</span>
             </a>
             <a href="#" className="social-link" aria-label="LinkedIn">
               <i className="fab fa-linkedin"></i>
+              <span className="social-name">LinkedIn</span>
             </a>
           </div>
         </div>

@@ -9,7 +9,8 @@
     }
     
 body {
-    background: #0A0A0A;
+  background: #0A0A0A; 
+    
 }
 
 h1, h2, h3, h4 {
@@ -34,10 +35,10 @@ button {
         /* width: 50%; */
       }
     
-      .cta-link:hover {
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5),
-                   0 0 40px rgba(255, 0, 255, 0.3);
-        transform: translateY(-3px);
+button:hover {
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5),
+                  0 0 40px rgba(255, 0, 255, 0.3);
+      transform: translateY(-3px);
       }
 
 .project-container {

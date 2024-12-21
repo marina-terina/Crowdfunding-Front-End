@@ -13,6 +13,14 @@ function CreatePledge() {
     const { projectId } = useParams();
     const { project, isLoading, error } = useProject(projectId);
     const [creatorName, setCreatorName] = useState(null);
+    const [formData, setFormData] = useState({
+        amount: "",
+        comment: "",
+        isAnonymous: false,
+        reward: false,
+        projectId: "",
+    });
+    const [showThankYou, setShowThankYou] = useState(false);
 
     useEffect(() => {
         const fetchCreatorName = async () => {
@@ -29,28 +37,6 @@ function CreatePledge() {
 
         fetchCreatorName();
     }, [project?.owner]);
-
-    if (!auth.token) {
-        return (
-            <div className="login-message">
-                <h2>Oops! Almost there!</h2>
-                <p>You're just one step away from supporting something amazing! But first, we need you to log in. Don't worry—if you prefer, you can still pledge anonymously! Log in now and let's make your pledge count! </p>
-                <button onClick={() => navigate('/login')}>Go to Login</button>
-                <p className="signup-prompt">
-                    Don't have an account? <Link to="/signup">Sign up here</Link>
-                </p>
-            </div>
-        );
-    }
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
-    const [formData, setFormData] = useState({
-        amount: "",
-        comment: "",
-        isAnonymous: false,
-        reward: false,
-        projectId: "",
-    });
-    const [showThankYou, setShowThankYou] = useState(false);
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
@@ -93,8 +79,28 @@ function CreatePledge() {
         }
     };
 
-    if (showThankYou) {
-        return (
+    // Render different content based on conditions
+    let content;
+
+    if (isLoading) {
+        content = <div>Loading...</div>;
+    } else if (error) {
+        content = <div>Error loading project: {error.message}</div>;
+    } else if (!project) {
+        content = <div>Project not found</div>;
+    } else if (!auth.token) {
+        content = (
+            <div className="login-message">
+                <h2>Oops! Almost there!</h2>
+                <p>You're just one step away from supporting something amazing! But first, we need you to log in. Don't worry—if you prefer, you can still pledge anonymously! Log in now and let's make your pledge count! </p>
+                <button onClick={() => navigate('/login')}>Go to Login</button>
+                <p className="signup-prompt">
+                    Don't have an account? <Link to="/signup">Sign up here</Link>
+                </p>
+            </div>
+        );
+    } else if (showThankYou) {
+        content = (
             <div className="thank-you-message">
                 <h2>Thank You for Your Support! 🎉</h2>
                 <p>Your pledge means the world to us!</p>
@@ -108,19 +114,17 @@ function CreatePledge() {
                 </div>
             </div>
         );
-    }
-
-    return (
-        <>
+    } else {
+        content = (
             <form className="create-pledge-form" onSubmit={handleSubmit}>
                 <div className="pledge-header">
                     <h2 className="pledge-title">Make a Pledge</h2>
                 </div>
-                <div className="project-section">   {/* Project Reward */}
+                <div className="project-section">
                     <h3 className="project-title">{project.title}</h3>
-                    <p className="meta-value">{creatorName}</p> 
+                    <p className="project-created">Created by: {creatorName}</p> 
                 </div>
-                <div className="reward-section">   {/* Project Reward */}
+                <div className="pledge-reward-section">
                     <h3>Reward:</h3>
                     <p>{project.reward}</p> 
                 </div>
@@ -170,6 +174,12 @@ function CreatePledge() {
 
                 <button type="submit">Submit Pledge</button>
             </form>
+        );
+    }
+
+    return (
+        <>
+            {content}
             <Footer />
         </>
     );

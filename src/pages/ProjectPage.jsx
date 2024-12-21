@@ -13,28 +13,30 @@ import Footer from "../components/Footer";
 function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
     });
-  }
+}
 
 function ProjectPage() {
     const {auth, setAuth} = useAuth();
     const navigate = useNavigate(); 
-    // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useProject hook.
     const { id } = useParams();
-    // useProject returns three pieces of info, so we need to grab them all here
     const { project, isLoading, error } = useProject(id); 
     console.log('Project data:', project);
     const userId = project?.user_id;
     console.log('User ID from project:', userId);
     const { user, isLoading: isUserLoading, error: userError } = useUser(userId);
-    // console.log('testing---user: ', user);
     console.log('User data:', user);
     console.log('Is user loading:', isUserLoading);
     console.log('Project user_id:', project?.user_id);
 
+    console.log('Auth user ID:', auth.userId);
+    console.log('Project owner:', project?.owner);
+    
+    const isOwner = auth.userId === project?.owner;
+    console.log('Is owner?', isOwner);
 
     const [formData, setFormData] = useState({
         title: project?.title || "",
@@ -44,14 +46,12 @@ function ProjectPage() {
         reward: project?.reward || "",
         image: project?.image || "",
         isOpen: project?.is_open || true,
-        // projectCreator: project?.userID || "",
     });
     const [showUpdateForm, setShowUpdateForm ] = useState(false);
     const [creatorName, setCreatorName] = useState(null);
     const [pledgeUsernames, setPledgeUsernames] = useState({});
 
     useEffect(() => {
-        // Fetch creator's username when project data is available
         const fetchCreatorName = async () => {
             if (project?.owner) {
                 try {
@@ -112,8 +112,6 @@ function ProjectPage() {
                     navigate("/");
             });
     }
-    const isOwner = auth.userId === project.owner;
-    
     const currentAmount = project?.pledges?.reduce(
         (total, pledge) => total + pledge.amount,
         0
@@ -126,17 +124,12 @@ function ProjectPage() {
             <div className="project-card-container">
                 <div class="project-card-header">
                     <div class="project-card-main-content">
-                        {/* Project Image */}
                         <img className="projectPage-image"
                             src={project.image} 
                             alt={`Image for ${project.title}`} 
                             
                         />
-
-                        {/* Project Title */}
                         <h2 className="project-title">{project.title}</h2>
-                        
-                        {/* Project Description */}
                         <p class="project-description">{project.description}</p> 
                         <div className="project-meta">
                         <div className="meta-item">
@@ -147,67 +140,69 @@ function ProjectPage() {
                         <p>Loading creator...</p>
                     )}
                     </div>
-                  </div>
-                  <div className="meta-item">
+                </div>
+
+                <div className="meta-item">
                     <div className="meta-label">Created at</div>
                     <div className="meta-value">{formatDate(project.date_created)}</div>
-                  </div>
-                  <div className="meta-item">
+                </div>
+                <div className="meta-item">
                     <div className="meta-label">Goal Amount:</div>
                     <div className="meta-value">{project.goal}</div>
-                  </div>
-                  <div className="meta-item">
+                </div>
+                <div className="meta-item">
                     <div className="meta-label">Status</div>
                     <div className="meta-value">{project.is_open ? "Open" : "Closed"}</div>
-                  </div>
-                  </div>
+                </div>
+                </div>
                   <div className="reward-section">   {/* Project Reward */}
                         <h3>Reward:</h3>
                         <p>{project.reward}</p> 
                     </div>
-                  
+
                 <div className="support-section">
-                <h3>Support This Project</h3>
+                    <h3>Support This Project</h3>
                 <div className="progress-bar">
-                  <div className="progress-fill"></div>
+                <div className="progress-fill"></div>
                 </div>
+
                 <div className="amount-row">
-                            <span className="current-amount">
+                        <span className="current-amount">
                                 ${currentAmount?.toLocaleString()}
-                            </span>
-                            <span className="goal-amount">
+                        </span>
+                        <span className="goal-amount">
                                 of ${project.goal?.toLocaleString()}
-                            </span>
-                        </div>
+                        </span>
+                </div>
+
                         <div className="support-button">
                         <Link to ={`/project/${project.id}/pledge`} className="pledge-link">
                         <p>Kick This Dream</p>
                         </Link>
                         </div>
-              </div>
-              </div>
-                      
+                </div>
+            </div>
 
             <div class="pledges-section">
                 <h2>Recent Pledges</h2>
                     <div className="pledges-card">
                     <div>
                     <ul>
-              {project.pledges.map((pledgeData, key) => (
-                <li key={key} className="pledge-card">
-                  <div className="pledge-header">
-                    <div className="meta-value">
-                      {pledgeData.anonymous
+                        {project.pledges.map((pledgeData, key) => (
+                            <li key={key} className="pledge-card">
+                            <div className="pledge-header">
+                        <div className="meta-value">
+                                    {pledgeData.anonymous
                         ? "Anonymous"
                         : pledgeUsernames[pledgeData.supporter] || "Loading..."}
-                    </div>
+                        </div>
                     <div className="pledge-amount">${pledgeData.amount}</div>
-                  </div>
-                  {pledgeData.comment && <p className="pledge-comment">{pledgeData.comment}</p>}
-                </li>
-              ))}
-            </ul>
-            </div>
+                            </div>
+                    {pledgeData.comment && <p className="pledge-comment">{pledgeData.comment}</p>}
+                            </li>
+            ))}
+                    </ul>
+                    </div>
             </div>
                     
 
@@ -215,17 +210,16 @@ function ProjectPage() {
             <UpdateProject project={project} />
         ) : (
             <div className="owner-support-button">
-                {auth.token && isOwner ? (
-                    <button className="update-pledge-btn" onClick={handleUpdate}>
-                        Update this Dream
-                    </button>  
-                ) : null}
-
-                {auth.token && isOwner ? (
-                    <button className="delete-pledge-btn" onClick={handleDelete}>
-                        Delete this Dream
-                    </button>  
-                ) : null}
+                {auth.token && isOwner && (  // Make sure both conditions are met
+                    <>
+                        <button className="update-pledge-btn" onClick={handleUpdate}>
+                            Update this Dream
+                        </button>
+                        <button className="delete-pledge-btn" onClick={handleDelete}>
+                            Delete this Dream
+                        </button>
+                    </>
+                )}
             </div>
         )}
             </div>

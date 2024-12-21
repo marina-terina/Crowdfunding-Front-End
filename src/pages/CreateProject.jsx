@@ -40,8 +40,6 @@ function CreateProject() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // const {project, isLoading, error} = useCreateProject(newProject.title, newProject.description, newProject.goal, newProject.reward, newProject.image)
-        // console.log("Project Created:", project);
         createProject(newProject.title, newProject.description, newProject.goal, newProject.reward, newProject.image, true)
     .then((res) => {
         navigate("/");
@@ -57,10 +55,7 @@ function CreateProject() {
     return (
         <div className="create-project-container">
         <form className="create-project-form" onSubmit={handleSubmit}>
-
-
             <h2>Create Your Dream Project</h2>
-            
             <div className="form-group">
                 <label htmlFor="title">Project Title:</label>
                 <input
@@ -120,14 +115,11 @@ function CreateProject() {
                 />
             </div>
 
-            
-
             <button className = "createProject-button" type="submit">Kickstart Your Dream Project</button>
         </form>
         <Footer />
         </div>
     );
 }
-
 
 export default CreateProject;

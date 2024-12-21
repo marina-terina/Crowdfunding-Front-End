@@ -28,9 +28,9 @@
 
 .image-container img {
     width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
 }
 
 .projectCard-title {
@@ -71,7 +71,7 @@
     color: #fff;
     padding: 0.8rem;
     border: none;
-    border-radius: 0px
+    border-radius: 0px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -100,29 +100,10 @@
     color: darkgrey;
 
 }
-/* .current-amount,
-.goal-amount {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-} */
-
 
 .project-card a {
     text-decoration: none;
 }
-
-/* .project-card .amount-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-} */
-
-/* .project-card .current-amount,
-.project-card .goal-amount {
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-} */
 
 .current-amount {
     color: #333;

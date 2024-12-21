@@ -1,5 +1,5 @@
 .project-card-container {
-    background-color: black;
+  background-color: black;
     position: relative;
     width: 60%;
     margin: 70px auto;
@@ -96,8 +96,6 @@ h3, p, ul {
     flex-direction: column;
     gap: 1.5rem;
 }
-
-
 
   .project-description {
     color: rgba(255, 255, 255, 0.8);
