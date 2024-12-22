@@ -15,14 +15,11 @@ function Dashboard() {
     const navigate = useNavigate();
     const [isEditing, setIsEditing] = useState(false);
     const [activeSection, setActiveSection] = useState(null);
-
-    const toggleSection = (section) => {
-        if (activeSection === section) {
-            setActiveSection(null); // Close if already open
-        } else {
-            setActiveSection(section); // Open the clicked section
-        }
-    };
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: '',
+    });
 
     // Redirect if not logged in
     if (!auth.token) {
@@ -34,8 +31,7 @@ function Dashboard() {
         setFormData({
             username: userData?.username || '',
             email: userData?.email || '',
-            bio: userData?.bio || '',
-            // Set other fields
+            password: '', // Password field starts empty
         });
         setIsEditing(true);
     };
