@@ -92,8 +92,8 @@ Kickaroo is a crowdfunding platform designed to help people bring their wildest,
 #### Other
 - ![Thank You Message for creating a pledge](./relative/image/ThankYou.png)
 - ![User's Dashboard](./relative/image/Dashboard.png)
-- ![User's Dashboard-Pledges](./relative/image/DashboardPledges.png)
-- ![User's Dashboard-Projects](./relative/image/DashboardProjects.png)
+- ![User's Dashboard-Pledges](./relative/image/DashboardPledjes.png)
+- ![User's Dashboard-Projects](./relative/image/DashboardProject.png)
 
 
 
