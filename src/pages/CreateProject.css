@@ -11,6 +11,16 @@
     
 }
 
+.login-message {
+    text-align: center;
+    padding: 20px;
+    margin: 200px auto;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    
+}
+
 .create-project-form h2 {
     text-align: center;
     margin-bottom: 30px;
@@ -63,15 +73,7 @@
     font-family: inherit;
 }
 
-.login-message {
-    text-align: center;
-    padding: 20px;
-    margin: 200px auto;
-    max-width: 400px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    
-}
+
 
 .login-message h2 {
     color: #dc3545;
