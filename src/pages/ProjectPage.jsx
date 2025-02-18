@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom";
 import useProject from "../hooks/use-project";
-import "./ProjectPage.css"
 import deleteProject from "../api/delete-project";
 import updateProject from "../api/update-project.js"
 import { useNavigate } from "react-router-dom";

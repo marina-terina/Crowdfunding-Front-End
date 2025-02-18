@@ -5,7 +5,6 @@ import useUser from '../hooks/use-user';
 import useUserProjects from '../hooks/use-user-projects';
 import useUserPledges from '../hooks/use-user-pledges';
 import Footer from '../components/Footer';
-import './Dashboard.css';
 
 function Dashboard() {
     const { auth } = useAuth();

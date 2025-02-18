@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { postPledge } from "../api/post-pledge";
-import "./CreatePledge.css";
 import useAuth from "../hooks/use-auth";
 import confetti from 'canvas-confetti';
 import useProject from "../hooks/use-project";

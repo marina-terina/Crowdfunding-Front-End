@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import useCreateProject from "../hooks/create-projects";
 import createProject from "../api/create-project";
-import "./CreateProject.css";
 import useAuth from "../hooks/use-auth";
 import Footer from "../components/Footer";
 
