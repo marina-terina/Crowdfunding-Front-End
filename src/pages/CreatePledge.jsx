@@ -4,7 +4,6 @@ import { postPledge } from "../api/post-pledge";
 import useAuth from "../hooks/use-auth";
 import confetti from 'canvas-confetti';
 import useProject from "../hooks/use-project";
-import Footer from "../components/Footer";
 
 function CreatePledge() {
     const { auth } = useAuth();
@@ -44,6 +43,13 @@ function CreatePledge() {
         }
     }, []);
 
+    useEffect(() => {
+        setFormData(prevData => ({
+            ...prevData,
+            projectId: projectId
+        }));
+    }, [projectId]);
+
     const handleChange = (event) => {
         const { id, value, type, checked } = event.target;
         setFormData((prevData) => ({
@@ -63,9 +69,21 @@ function CreatePledge() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        
+        // Add validation
+        if (!formData.amount || parseFloat(formData.amount) <= 0) {
+            alert("Please enter a valid amount");
+            return;
+        }
+
+        if (!formData.comment || formData.comment.trim() === "") {
+            alert("Please enter a comment");
+            return;
+        }
+
         try {
             await postPledge(
-                formData.amount,
+                parseFloat(formData.amount),
                 formData.comment,
                 formData.isAnonymous,
                 formData.reward,
@@ -75,6 +93,7 @@ function CreatePledge() {
             setShowThankYou(true);
         } catch (error) {
             console.error("Error creating pledge:", error);
+            alert(error.message); // Show the specific error message
         }
     };
 
@@ -89,7 +108,7 @@ function CreatePledge() {
         content = <div>Project not found</div>;
     } else if (!auth.token) {
         content = (
-            <div className="login-message">
+            <div className="login-errormessage">
                 <h2>Oops! Almost there!</h2>
                 <p>You're just one step away from supporting something amazing! But first, we need you to log in. Don't worry—if you prefer, you can still pledge anonymously! Log in now and let's make your pledge count! </p>
                 <button onClick={() => navigate('/login')}>Go to Login</button>
@@ -140,7 +159,7 @@ function CreatePledge() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="comment">Comment (Optional):</label>
+                    <label htmlFor="comment">Comment:</label>
                     <textarea
                         id="comment"
                         placeholder="Leave a message of support..."
@@ -179,7 +198,6 @@ function CreatePledge() {
     return (
         <>
             {content}
-            <Footer />
         </>
     );
 }

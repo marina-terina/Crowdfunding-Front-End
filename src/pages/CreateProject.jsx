@@ -3,7 +3,7 @@ import { Link,useNavigate } from "react-router-dom";
 import useCreateProject from "../hooks/create-projects";
 import createProject from "../api/create-project";
 import useAuth from "../hooks/use-auth";
-import Footer from "../components/Footer";
+
 
 function CreateProject() {
     const { auth } = useAuth();
@@ -18,7 +18,7 @@ function CreateProject() {
 
     if (!auth.token) {
         return (
-            <div className="login-message">
+            <div className="login-error-message">
                 <h2>Oops! Almost there!</h2>
                 <p>You're just one step away from bringing your dream to life! But first, we need you to log in. Go ahead, log in and let's make it happen!  </p>
                 <button onClick={() => navigate('/login')}>Go to Login</button>
@@ -116,7 +116,6 @@ function CreateProject() {
 
             <button className = "createProject-button" type="submit">Kickstart Your Dream Project</button>
         </form>
-        <Footer />
         </div>
     );
 }

@@ -1,5 +1,4 @@
 import LoginForm from "../components/LoginForm";
-import Footer from "../components/Footer";
 import kickarooLogo from "../assets/images/Kickaroo.png";
 import "../components/LoginForm.css";
 
@@ -10,7 +9,6 @@ function LoginPage() {
                 <img src={kickarooLogo} alt="Kickaroo Logo" className="login-logo" />
                 <LoginForm />
             </div>
-            <Footer />
         </>
     );
 }

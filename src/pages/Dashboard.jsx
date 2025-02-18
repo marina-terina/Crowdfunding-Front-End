@@ -4,7 +4,7 @@ import useAuth from '../hooks/use-auth';
 import useUser from '../hooks/use-user';
 import useUserProjects from '../hooks/use-user-projects';
 import useUserPledges from '../hooks/use-user-pledges';
-import Footer from '../components/Footer';
+
 
 function Dashboard() {
     const { auth } = useAuth();
@@ -254,7 +254,6 @@ function Dashboard() {
                     </section>
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

@@ -1,7 +1,7 @@
 import useProjects from "../hooks/use-projects";
 import ProjectCard from "../components/ProjectCard";
 import HeroSection from '../components/HeroSection';
-import Footer from "../components/Footer";
+
 
 
 function HomePage() {
@@ -16,9 +16,9 @@ if (isLoading) {
     }
     
     return (
-    <div>
-            <HeroSection />
-            <section class="features">
+    <>
+        <HeroSection />
+        <section class="features">
     <div class="feature-card">
       <div class="feature-icon">🚀</div>
       <h3>Wild Ideas Welcome</h3>
@@ -43,8 +43,7 @@ if (isLoading) {
                     })}
                 </div>
         </section>
-        <Footer />
-    </div>
+    </>
 );   
 }
 

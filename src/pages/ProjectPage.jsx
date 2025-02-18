@@ -7,7 +7,7 @@ import useAuth from "../hooks/use-auth.js";
 import { useState, useEffect } from "react";
 import UpdateProject from "./UpdateProject.jsx";
 import useUser from "../hooks/use-user.js";
-import Footer from "../components/Footer";
+
 
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -224,7 +224,6 @@ function ProjectPage() {
             </div>
             </div>
             </div>
-            <Footer />
         </>
     );
 }
