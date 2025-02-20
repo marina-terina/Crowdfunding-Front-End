@@ -19,21 +19,21 @@ if (isLoading) {
     <>
         <HeroSection />
         <section class="features">
-    <div class="feature-card">
-      <div class="feature-icon">🚀</div>
-      <h3>Wild Ideas Welcome</h3>
-      <p>The crazier, the better! We're here for the unconventional dreamers.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🌈</div>
-      <h3>Adventure Awaits</h3>
-      <p>Be part of extraordinary journeys that push boundaries.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💫</div>
-      <h3>Community Power</h3>
-      <p>Connect with fellow adventurers who believe in making magic happen.</p>
-    </div>
+        <div class="feature-card">
+  <div class="feature-icon">🌍</div>
+  <h2>Bold Journeys Ahead</h2>
+  <p>The more adventurous, the better! We’re here for those who dare to wander off the beaten path.</p>
+</div>
+<div class="feature-card">
+  <div class="feature-icon">✈️</div>
+  <h2>Explore the Unknown</h2>
+  <p>Join extraordinary adventures that take you to places beyond imagination.</p>
+</div>
+<div class="feature-card">
+  <div class="feature-icon">🌟</div>
+  <h2>Wander with a Tribe</h2>
+  <p>Connect with fellow explorers who share your passion for the road less traveled.</p>
+</div>
   </section>    
         <section className ="projects-container">
             <h2><span>Dreams</span> in Motion</h2>

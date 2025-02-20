@@ -6,11 +6,11 @@ function HeroSection() {
     return (
         <div className="hero-section">
             <div className="hero-content">
-                <p>Join a community of fearless creators and backers who dare to make the impossible possible.</p>
+                <p>Join a community of adventurous travelers and supporters who turn dreams into reality.</p>
                 <div id="rotate-words">  
                     <div>Kickstart Your dream<br /> </div> 
-                    <div>Here, big dreams take flight<br /></div>
-                    <div>No idea is too wild, no dream too bizarre!<br/></div>
+                    <div>Where the world is yours to explore<br /></div>
+                    <div>No journey is too far<br /></div>
                     <div>Achieve your dreams, inspire others<br /> </div>
                 </div>
 

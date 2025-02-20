@@ -36,7 +36,20 @@ function ProjectCard({ projectData }) {
         <div className="project-card">
             <Link to={projectLink}>
                 <div className="image-container">
-                    <img src={projectData.image} alt={projectData.title} />
+                    <img 
+                        src={projectData.image} 
+                        alt={projectData.title}
+                        onError={(e) => {
+                            console.error("Failed to load image:", {
+                                url: projectData.image,
+                                project: projectData.title
+                            });
+                            // Prevent infinite loop by removing the error handler after first try
+                            e.target.onError = null;
+                            // Use an external placeholder service
+                            e.target.src = "https://via.placeholder.com/400x300/000000/FFFFFF?text=No+Image";
+                        }}
+                    />
                 </div>
                 <h3 className="projectCard-title">{projectData.title}</h3>
             </Link>

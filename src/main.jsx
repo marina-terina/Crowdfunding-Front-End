@@ -13,6 +13,8 @@ import CreatePledge from "./pages/CreatePledge.jsx";
 import HowItWorks from "./pages/HowItWorks.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Footer from "./components/Footer.jsx";
+import "./components/Footer.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 // Create a Layout component to wrap NavBar and Footer
 const Layout = () => {
