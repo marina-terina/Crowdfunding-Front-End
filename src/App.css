@@ -288,7 +288,7 @@ h3, p, ul {
 }
 
 .project-info h3 {
-    font-size: 14px; /* smaller size for date and status */
+    font-size: 14px; 
     color: gray;
     text-align: center;
     margin-top: 30px;
@@ -318,11 +318,11 @@ h3, p, ul {
 .project-creator {
     display: flex;
     align-items: center;
-    gap: 10px;  /* Space between heading and name */
+    gap: 10px;  
 }
 
 .project-creator h3 {
-    margin: 0;  /* Remove default margin */
+    margin: 0; 
 }
 
 .project-info {
@@ -866,8 +866,8 @@ width: 100%;
 
 /* Responsive */
 
-/* Tablet and smaller desktops */
 @media screen and (max-width: 1024px) {
+  
     #project-list {
         grid-template-columns: 45% 45%;
         column-gap: 20px;

@@ -63,6 +63,7 @@ form input[type="password"] {
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
+}
 
 form button {
     margin-top: 15px;
@@ -87,21 +88,8 @@ form a:hover {
 
 .error-message {
     color: red;
-
-/* Responsive design for smaller screens */
-
-
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
 }
+
 
 @media (max-width: 768px) {
     form {
