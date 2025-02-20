@@ -44,9 +44,7 @@ function ProjectCard({ projectData }) {
                                 url: projectData.image,
                                 project: projectData.title
                             });
-                            // Prevent infinite loop by removing the error handler after first try
                             e.target.onError = null;
-                            // Use an external placeholder service
                             e.target.src = "https://via.placeholder.com/400x300/000000/FFFFFF?text=No+Image";
                         }}
                     />

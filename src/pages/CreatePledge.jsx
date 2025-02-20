@@ -37,13 +37,6 @@ function CreatePledge() {
     }, [project?.owner]);
 
     useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        if (!token) {
-            setIsLoggedIn(false); // Update state to show login message
-        }
-    }, []);
-
-    useEffect(() => {
         setFormData(prevData => ({
             ...prevData,
             projectId: projectId
@@ -108,10 +101,10 @@ function CreatePledge() {
         content = <div>Project not found</div>;
     } else if (!auth.token) {
         content = (
-            <div className="login-errormessage">
+            <div className="login-error-message">
                 <h2>Oops! Almost there!</h2>
                 <p>You're just one step away from supporting something amazing! But first, we need you to log in. Don't worry—if you prefer, you can still pledge anonymously! Log in now and let's make your pledge count! </p>
-                <button onClick={() => navigate('/login')}>Go to Login</button>
+                <button onClick={() => navigate('/login')}>Login</button>
                 <p className="signup-prompt">
                     Don't have an account? <Link to="/signup">Sign up here</Link>
                 </p>

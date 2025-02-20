@@ -16,7 +16,10 @@ function NavBar() {
                 <Link to="/howitworks">How It Works</Link>
             </div>
             <div className="logo-container">
-                <Link className="logo" to="/">Kick<span>arOO!</span></Link>
+                <Link className="logo" to="/">
+                <span className="logo-text">Kick</span>
+                <span className="logo-highlight">arOO!</span>
+                </Link>
             </div>
             <div className="nav-right">
                 {auth.token ? (
@@ -27,7 +30,7 @@ function NavBar() {
                         </Link>
                     </>
                 ) : (
-                    <Link className="login-button" to="/login">Login</Link>
+                    <Link className="login-link" to="/login">Login</Link>
                 )}
             </div>
         </nav>

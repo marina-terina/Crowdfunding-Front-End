@@ -4,7 +4,6 @@ function SignupPage() {
     return (
         <>
         <div className="login-container">
-                <img src={kickarooLogo} alt="Kickaroo Logo" className="login-logo" />
                 <SignupForm/>
             </div>
         </>
