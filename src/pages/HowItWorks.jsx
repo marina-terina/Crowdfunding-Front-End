@@ -9,7 +9,7 @@ const HowItWorks = () => {
         <header className="section-header">
           <h2 className="section-title">How Kickaroo Works</h2>
           <p className="section-subtitle">
-            Your journey from idea to reality in four simple steps
+            Your journey from dream destination to reality in four simple steps
           </p>
         </header>
 
@@ -19,15 +19,14 @@ const HowItWorks = () => {
               <i className="fas fa-lightbulb"></i>
               <span className="step-number">1</span>
             </div>
-            <h3 className="step-title">Create Your Project</h3>
+            <h3 className="step-title">Plan Your Trip</h3>
             <p className="step-description">
-              Share your creative idea, set your funding goal, and craft compelling 
-              rewards that will attract potential backers to your campaign.
+              Share your travel dream, set your funding goal, and create exciting rewards to inspire fellow travelers to support your journey.
             </p>
             <ul className="step-details">
-              <li>Define your project scope</li>
-              <li>Set achievable funding goals</li>
-              <li>Create attractive reward tiers</li>
+              <li>Choose your dream destination</li>
+              <li>Set achievable funding targets</li>
+              <li>Design unique reward packages for your backers</li>
             </ul>
           </div>
 
@@ -36,15 +35,14 @@ const HowItWorks = () => {
               <i className="fas fa-rocket"></i>
               <span className="step-number">2</span>
             </div>
-            <h3 className="step-title">Launch & Promote</h3>
+            <h3 className="step-title">Launch & Share</h3>
             <p className="step-description">
-              Launch your campaign and spread the word through your network. 
-              Use our promotional tools to reach a wider audience.
+              Start your campaign and share it with your community. Use Kickaroo’s tools to connect with passionate travelers who’ll help you make your trip possible.
             </p>
             <ul className="step-details">
               <li>Share on social media</li>
-              <li>Engage with your community</li>
-              <li>Track campaign metrics</li>
+              <li>Connect with fellow explorers</li>
+              <li>Monitor your campaign’s progress</li>
             </ul>
           </div>
 
@@ -55,13 +53,12 @@ const HowItWorks = () => {
             </div>
             <h3 className="step-title">Get Funded</h3>
             <p className="step-description">
-              Watch as backers support your project. Engage with your community 
-              and keep them updated on your progress.
+              See how travelers and adventurers back your journey. Keep them engaged with updates and inspire them to join your adventure.
             </p>
             <ul className="step-details">
-              <li>Receive backer pledges</li>
-              <li>Provide regular updates</li>
-              <li>Answer backer questions</li>
+              <li>Receive support from fellow travelers</li>
+              <li>Provide regular trip updates</li>
+              <li>Answer questions and share travel tips</li>
             </ul>
           </div>
 
@@ -70,26 +67,25 @@ const HowItWorks = () => {
               <i className="fas fa-gift"></i>
               <span className="step-number">4</span>
             </div>
-            <h3 className="step-title">Deliver Rewards</h3>
+            <h3 className="step-title">Embark & Share Your Adventure</h3>
             <p className="step-description">
-              Once funded, bring your project to life and deliver the promised 
-              rewards to your loyal backers.
+              Once funded, set off on your adventure and share your experiences with your supporters. Deliver the rewards and keep your backers updated along the way.
             </p>
             <ul className="step-details">
-              <li>Complete your project</li>
-              <li>Fulfill reward tiers</li>
-              <li>Share project success</li>
+              <li>Travel to your dream destination</li>
+              <li>Fulfill your reward promises</li>
+              <li>Share your travel success story</li>
             </ul>
           </div>
         </div>
 
         <div className="cta-section">
-          <h3 className="cta-title">Ready to Start Your Project?</h3>
+          <h3 className="cta-title">Ready to Start Your Travel Adventure?</h3>
           <p className="cta-description">
-            Join thousands of creators who have successfully funded their projects on Kickaroo
+            Join the growing community of explorers who’ve funded their dream trips with Kickaroo
           </p>
           <Link to="/createProject">
-          <button className="cta-button">Start Your Project</button>
+            <button className="cta-button">Start Your Journey</button>
           </Link>
         </div>
       </div>
@@ -98,3 +94,4 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
+

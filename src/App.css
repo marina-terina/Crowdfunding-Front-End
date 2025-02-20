@@ -28,7 +28,8 @@ button {
         background: linear-gradient(45deg, #0ff, #f0f);
         color: #fff;
         padding: 1rem 2rem;
-        border-radius: 15px;
+        border-radius: 10px;
+        border: none;
         text-decoration: none;
         font-weight: 60;
         transition: all 0.3s ease;
@@ -379,26 +380,22 @@ h3, p, ul {
     border: 1px solid rgba(0, 255, 255, 0.1);
   }
 
-  .support-button {
-    background: linear-gradient(45deg, #0ff, #f0f);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  .create-pledge-btn {
+    width: 90%;
   }
 
-  .support-button:hover {
+  .create-pledge-btn:hover {
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
     transform: translateY(-2px);
   }
 
-.support-button p {
+  .create-pledge-btn p {
     text-align: center;
     font-size: 1rem;
     font-weight: 600;
 }
 
-.support-button a {
+.create-pledge-btn a {
     text-decoration: none;
     color: white;
   }
@@ -867,7 +864,7 @@ width: 100%;
 /* Responsive */
 
 @media screen and (max-width: 1024px) {
-  
+
     #project-list {
         grid-template-columns: 45% 45%;
         column-gap: 20px;

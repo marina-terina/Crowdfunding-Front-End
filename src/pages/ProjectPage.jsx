@@ -182,7 +182,7 @@ function ProjectPage() {
                     </div>
 
                     <Link to={`/project/${project.id}/pledge`} className="support-button-link">
-                        <button className="support-button">
+                        <button className="create-pledge-btn">
                             Support This Dream
                         </button>
                     </Link>

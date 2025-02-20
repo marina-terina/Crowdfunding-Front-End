@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="footer-section">
           <h3 className="footer-title">About Kickaroo</h3>
           <p className="footer-text">
-            Empowering creators to bring their projects to life through community support.
+          Empowering explorers to bring their travel dreams to life through community support.
           </p>
         </div>
 

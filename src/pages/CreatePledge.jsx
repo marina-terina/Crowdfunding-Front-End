@@ -63,7 +63,6 @@ function CreatePledge() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         
-        // Add validation
         if (!formData.amount || parseFloat(formData.amount) <= 0) {
             alert("Please enter a valid amount");
             return;
@@ -86,11 +85,10 @@ function CreatePledge() {
             setShowThankYou(true);
         } catch (error) {
             console.error("Error creating pledge:", error);
-            alert(error.message); // Show the specific error message
+            alert(error.message); 
         }
     };
 
-    // Render different content based on conditions
     let content;
 
     if (isLoading) {
