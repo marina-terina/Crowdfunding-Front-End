@@ -160,25 +160,32 @@ function ProjectPage() {
                     </div>
 
                 <div className="support-section">
-                    <h3>Support This Project</h3>
-                <div className="progress-bar">
-                <div className="progress-fill"></div>
-                </div>
+                    <h2>Support This Project</h2>
+                    <div className="progress-bar">
+                        <div 
+                            className="progress-fill"
+                            style={{ width: `${pledgePercentage}%` }}
+                        ></div>
+                    </div>
 
-                <div className="amount-row">
+                    <div className="amount-row">
                         <span className="current-amount">
-                                ${currentAmount?.toLocaleString()}
+                            ${currentAmount?.toLocaleString()}
                         </span>
                         <span className="goal-amount">
-                                of ${project.goal?.toLocaleString()}
+                            of ${project.goal?.toLocaleString()}
                         </span>
-                </div>
+                    </div>
 
-                        <div className="support-button">
-                        <Link to ={`/project/${project.id}/pledge`} className="pledge-link">
-                        <p>Kick This Dream</p>
-                        </Link>
-                        </div>
+                    <div className="progress-info">
+                        <span>{pledgePercentage?.toFixed(1)}% Funded</span>
+                    </div>
+
+                    <Link to={`/project/${project.id}/pledge`} className="support-button-link">
+                        <button className="support-button">
+                            Support This Dream
+                        </button>
+                    </Link>
                 </div>
             </div>
 
