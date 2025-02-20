@@ -13,12 +13,16 @@ function Dashboard() {
     const { pledges, isLoading: pledgesLoading, error: pledgesError } = useUserPledges();
     const navigate = useNavigate();
     const [isEditing, setIsEditing] = useState(false);
-    const [activeSection, setActiveSection] = useState(null);
+    const [activeSection, setActiveSection] = useState('projects');
     const [formData, setFormData] = useState({
         username: '',
         email: '',
         password: '',
     });
+
+    const toggleSection = (section) => {
+        setActiveSection(activeSection === section ? null : section);
+    };
 
     // Redirect if not logged in
     if (!auth.token) {

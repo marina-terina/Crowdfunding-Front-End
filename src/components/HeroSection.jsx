@@ -7,7 +7,7 @@ import backgroundVideo from "../assets/video/kickaroo (2).mp4";
 function HeroSection() {
     return (
         <div className="hero-section">
-            <div className="video-background">
+            {/* <div className="video-background">
                 <video 
                     autoPlay 
                     muted 
@@ -20,7 +20,7 @@ function HeroSection() {
                     <source src={backgroundVideo} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            </div>
+            </div> */}
             <div className="hero-content">
                 <p>Join a community of adventurous travelers and supporters who turn dreams into reality.</p>
                 <div id="rotate-words">  
